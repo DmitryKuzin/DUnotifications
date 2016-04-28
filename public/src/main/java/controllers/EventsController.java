@@ -45,7 +45,7 @@ public class EventsController {
     @RequestMapping(value = "/du",method = RequestMethod.GET)
     @ResponseBody
     public String getEvents(int homeNum){
-        System.out.println(homeNum);
+        System.out.println("Номер дома->"+homeNum);
 
         return json;
     }
