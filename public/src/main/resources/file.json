@@ -1,0 +1,24 @@
+{
+  "items":[
+    {
+      "name": "Голос ДУ",
+      "description": "Сегодня в доме 11а состоится Голос ДУ",
+      "dt": "1461744000"
+    },
+    {
+      "name": "Item_2",
+      "description": "Description_2",
+      "dt": "1461744000"
+    },
+    {
+      "name": "Item_3",
+      "description": "Description_3",
+      "dt": "1461744000"
+    },
+    {
+      "name": "Item_4",
+      "description": "Description_4",
+      "dt": "1461744000"
+    }
+  ]
+}
