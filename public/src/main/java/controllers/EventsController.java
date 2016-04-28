@@ -16,6 +16,11 @@ import java.util.List;
 @RequestMapping(value = "/events")
 public class EventsController {
 
+    @ResponseBody
+    public String getPage(){
+        return "ok";
+    }
+
     private final String json="{\n" +
             "\"items\":[\n" +
             "{\n" +
@@ -49,6 +54,8 @@ public class EventsController {
 
         return json;
     }
+
+
 
 
 
