@@ -24,8 +24,8 @@ public class EventsController {
     private final String json="{\n" +
             "\"items\":[\n" +
             "{\n" +
-            "\"name\": \"Голос ДУ\",\n" +
-            "\"description\": \"Сегодня в доме 11а состоится Голос ДУ\",\n" +
+            "\"name\": \"DU voice\",\n" +
+            "\"description\": \"Today DU voice being held in 11th home!\",\n" +
             "\"dt\": \"1461744000\"\n" +
             "},\n" +
             "{\n" +
