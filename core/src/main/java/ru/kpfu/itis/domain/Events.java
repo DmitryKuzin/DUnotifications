@@ -4,21 +4,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * Created by kuzin on 28.04.2016.
  */
 @Entity
 public class Events {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
 
-    private String startTime;
+    private String description;
 
-    private String endTime;
+    private Long dt;
 
     private String place;
 
@@ -26,20 +28,14 @@ public class Events {
 
     private int maxParticipansCount;
 
+
+
     public int getCurrentParticipantsCount() {
         return currentParticipantsCount;
     }
 
     public void setCurrentParticipantsCount(int currentParticipantsCount) {
         this.currentParticipantsCount = currentParticipantsCount;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
     }
 
     public Long getId() {
@@ -74,11 +70,19 @@ public class Events {
         this.place = place;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getDescription() {
+        return description;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Long getDt() {
+        return dt;
+    }
+
+    public void setDt(Long dt) {
+        this.dt = dt;
     }
 }
