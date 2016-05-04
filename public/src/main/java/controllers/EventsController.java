@@ -45,20 +45,20 @@ public class EventsController {
     DUEventsView getEvents(@PathVariable Integer homeNum){
         if(events==null) {
             events = new ArrayList<Events>();
+
+            Events event = new Events();
+            event.setName("Голос ДУ");
+            event.setDescription("Сегодня в доме 11а состоится Голос ДУ!");
+            event.setDt(UnixDateConverter.milisToSecs(new Date().getTime()) + 1000L);
+            Events event2 = new Events();
+            event2.setName("Идем в кино на первого мстителя");
+            event2.setDescription("Если вы хотите сходить завтра вечером на премьеру фильма первый мститель гражданская война, напишите мне на почту potter@hogwards.wiz");
+            event2.setDt(UnixDateConverter.milisToSecs(new Date().getTime()) + 87000L);
+
+
+            events.add(event);
+            events.add(event2);
         }
-        Events event=new Events();
-        event.setName("Голос ДУ");
-        event.setDescription("Сегодня в доме 11а состоится Голос ДУ!");
-        event.setDt(UnixDateConverter.milisToSecs(new Date().getTime())+1000L);
-        Events event2=new Events();
-        event2.setName("Идем в кино на первого мстителя");
-        event2.setDescription("Если вы хотите сходить завтра вечером на премьеру фильма первый мститель гражданская война, напишите мне на почту potter@hogwards.wiz");
-        event2.setDt(UnixDateConverter.milisToSecs(new Date().getTime())+87000L);
-
-
-        events.add(event);
-        events.add(event2);
-
 
         return new DUEventsView(events);
     }
