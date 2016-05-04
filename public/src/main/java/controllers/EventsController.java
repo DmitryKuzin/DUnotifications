@@ -25,7 +25,7 @@ public class EventsController {
     public String getPage(){
         return "ok";
     }
-    
+
 
     @RequestMapping(value = "/du{homeNum}",method = RequestMethod.GET,headers = {"Accept=application/json"})
     public @ResponseBody
@@ -33,12 +33,12 @@ public class EventsController {
 
         List<Events> listEvents=new ArrayList<Events>();
         Events event=new Events();
-        event.setName("DU voice");
-        event.setDescription("Today DU voice being held in 11th home!");
+        event.setName("Голос ДУ");
+        event.setDescription("Сегодня в доме 11а состоится Голос ДУ!");
         event.setDt(UnixDateConverter.milisToSecs(new Date().getTime()));
         Events event2=new Events();
-        event2.setName("Item_2");
-        event2.setDescription("Description_2");
+        event2.setName("Идем в кино на первого мстителя");
+        event2.setDescription("Если вы хотите сходить завтра вечером на премьеру фильма первый мститель гражданская война, напишите мне на почту potter@hogwards.wiz");
         event2.setDt(UnixDateConverter.milisToSecs(new Date(new Date().getTime()+1000L).getTime()));
         Events event3=new Events();
         event3.setName("Item_3");
@@ -51,8 +51,7 @@ public class EventsController {
 
         listEvents.add(event);
         listEvents.add(event2);
-        listEvents.add(event3);
-        listEvents.add(event4);
+    
 
         return new DUEventsView(listEvents);
     }
