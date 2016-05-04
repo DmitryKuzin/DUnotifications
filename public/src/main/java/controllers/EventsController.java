@@ -35,23 +35,23 @@ public class EventsController {
         Events event=new Events();
         event.setName("Голос ДУ");
         event.setDescription("Сегодня в доме 11а состоится Голос ДУ!");
-        event.setDt(UnixDateConverter.milisToSecs(new Date().getTime()));
+        event.setDt(UnixDateConverter.milisToSecs(new Date().getTime())+1000L);
         Events event2=new Events();
         event2.setName("Идем в кино на первого мстителя");
         event2.setDescription("Если вы хотите сходить завтра вечером на премьеру фильма первый мститель гражданская война, напишите мне на почту potter@hogwards.wiz");
-        event2.setDt(UnixDateConverter.milisToSecs(new Date(new Date().getTime()+1000L).getTime()));
+        event2.setDt(UnixDateConverter.milisToSecs(new Date().getTime())+87000L);
         Events event3=new Events();
         event3.setName("Item_3");
         event3.setDescription("Description_3");
-        event3.setDt(UnixDateConverter.milisToSecs(new Date(new Date().getTime()+1000L).getTime()));
+        event3.setDt(UnixDateConverter.milisToSecs(new Date().getTime())+87000L);
         Events event4=new Events();
         event4.setName("Item_4");
         event4.setDescription("Description_4");
-        event4.setDt(UnixDateConverter.milisToSecs(new Date(new Date().getTime()+1000L).getTime()));
+        event4.setDt(UnixDateConverter.milisToSecs(new Date().getTime())+87000L);
 
         listEvents.add(event);
         listEvents.add(event2);
-    
+
 
         return new DUEventsView(listEvents);
     }
