@@ -21,8 +21,21 @@ import java.util.List;
 @RequestMapping(value = "/events")
 public class EventsController {
 
-    @ResponseBody
-    public String getPage(){
+
+    private List<Events> events;
+
+    @RequestMapping(method = RequestMethod.POST,headers = {"Accept=application/json"})
+    public @ResponseBody String setNewEvent(String event_name,String event_description,int event_max_students,long event_time){
+
+        if(events==null){
+            events=new ArrayList<Events>();
+        }
+        Events event=new Events();
+        event.setName(event_name);
+        event.setDescription(event_description);
+        event.setMaxParticipansCount(event_max_students);
+        event.setDt(event_time);
+        events.add(event);
         return "ok";
     }
 
@@ -30,8 +43,9 @@ public class EventsController {
     @RequestMapping(value = "/du{homeNum}",method = RequestMethod.GET,headers = {"Accept=application/json"})
     public @ResponseBody
     DUEventsView getEvents(@PathVariable Integer homeNum){
-
-        List<Events> listEvents=new ArrayList<Events>();
+        if(events==null) {
+            events = new ArrayList<Events>();
+        }
         Events event=new Events();
         event.setName("Голос ДУ");
         event.setDescription("Сегодня в доме 11а состоится Голос ДУ!");
@@ -40,20 +54,13 @@ public class EventsController {
         event2.setName("Идем в кино на первого мстителя");
         event2.setDescription("Если вы хотите сходить завтра вечером на премьеру фильма первый мститель гражданская война, напишите мне на почту potter@hogwards.wiz");
         event2.setDt(UnixDateConverter.milisToSecs(new Date().getTime())+87000L);
-        Events event3=new Events();
-        event3.setName("Item_3");
-        event3.setDescription("Description_3");
-        event3.setDt(UnixDateConverter.milisToSecs(new Date().getTime())+87000L);
-        Events event4=new Events();
-        event4.setName("Item_4");
-        event4.setDescription("Description_4");
-        event4.setDt(UnixDateConverter.milisToSecs(new Date().getTime())+87000L);
-
-        listEvents.add(event);
-        listEvents.add(event2);
 
 
-        return new DUEventsView(listEvents);
+        events.add(event);
+        events.add(event2);
+
+
+        return new DUEventsView(events);
     }
 
 

@@ -20,6 +20,7 @@ public class Events {
 
     private String description;
 
+    //time in seconds from 1970
     private Long dt;
 
     private String place;
