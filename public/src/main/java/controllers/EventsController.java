@@ -25,7 +25,7 @@ public class EventsController {
     private List<Events> events;
 
     @RequestMapping(method = RequestMethod.POST,headers = {"Accept=application/json"})
-    public @ResponseBody String setNewEvent(String eventName,String eventDescription,int eventMaxStudents,Long eventTime;){
+    public @ResponseBody String setNewEvent(String eventName,String eventDescription,int eventMaxStudents,Long eventTime){
 
         if(events==null){
             events=new ArrayList<Events>();
