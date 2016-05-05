@@ -30,11 +30,21 @@ public class EventsController {
         if(events==null){
             events=new ArrayList<Events>();
         }
+
+
         Events event=new Events();
-        event.setName(eventName);
-        event.setDescription(eventDescription);
-        event.setMaxParticipansCount(eventMaxStudents);
-        event.setDt(eventTime);
+        if(eventName!=null) {
+            event.setName(eventName);
+        }
+        if(eventDescription!=null) {
+            event.setDescription(eventDescription);
+        }
+        if(eventMaxStudents!=null) {
+            event.setMaxParticipansCount(eventMaxStudents);
+        }
+        if(eventTime!=null) {
+            event.setDt(eventTime);
+        }
         events.add(event);
         return "ok";
     }
