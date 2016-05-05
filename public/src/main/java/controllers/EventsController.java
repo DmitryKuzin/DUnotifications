@@ -25,16 +25,16 @@ public class EventsController {
     private List<Events> events;
 
     @RequestMapping(method = RequestMethod.POST,headers = {"Accept=application/json"})
-    public @ResponseBody String setNewEvent(String event_name,String event_description,int event_max_students,long event_time){
+    public @ResponseBody String setNewEvent(String eventName,String eventDescription,int eventMaxStudents,Long eventTime;){
 
         if(events==null){
             events=new ArrayList<Events>();
         }
         Events event=new Events();
-        event.setName(event_name);
-        event.setDescription(event_description);
-        event.setMaxParticipansCount(event_max_students);
-        event.setDt(event_time);
+        event.setName(eventName);
+        event.setDescription(eventDescription);
+        event.setMaxParticipansCount(eventMaxStudents);
+        event.setDt(eventTime);
         events.add(event);
         return "ok";
     }
