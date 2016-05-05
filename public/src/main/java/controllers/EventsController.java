@@ -34,15 +34,19 @@ public class EventsController {
 
         Events event=new Events();
         if(eventName!=null) {
+            System.out.println(eventName);
             event.setName(eventName);
         }
         if(eventDescription!=null) {
+            System.out.println(eventDescription);
             event.setDescription(eventDescription);
         }
         if(eventMaxStudents!=null) {
+            System.out.println(eventMaxStudents);
             event.setMaxParticipansCount(eventMaxStudents);
         }
         if(eventTime!=null) {
+            System.out.println(eventTime);
             event.setDt(eventTime);
         }
         events.add(event);
