@@ -2,11 +2,9 @@ package controllers;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.domain.Events;
+import utils.Event;
 import utils.UnixDateConverter;
 import views.DUEventsView;
 
@@ -22,34 +20,13 @@ import java.util.List;
 public class EventsController {
 
 
-    private List<Events> events;
-
     @RequestMapping(method = RequestMethod.POST,headers = {"Accept=application/json"})
-    public @ResponseBody String setNewEvent(String eventName,String eventDescription,Integer eventMaxStudents,Long eventTime){
+    public @ResponseBody String setNewEvent(@RequestBody Event event){
 
-        if(events==null){
-            events=new ArrayList<Events>();
-        }
+        System.out.println(event.eventName);
+        System.out.println(event.eventDescription);
+        System.out.println(event.eventMaxStudents);
 
-
-        Events event=new Events();
-        if(eventName!=null) {
-            System.out.println(eventName);
-            event.setName(eventName);
-        }
-        if(eventDescription!=null) {
-            System.out.println(eventDescription);
-            event.setDescription(eventDescription);
-        }
-        if(eventMaxStudents!=null) {
-            System.out.println(eventMaxStudents);
-            event.setMaxParticipansCount(eventMaxStudents);
-        }
-        if(eventTime!=null) {
-            System.out.println(eventTime);
-            event.setDt(eventTime);
-        }
-        events.add(event);
         return "ok";
     }
 
@@ -57,8 +34,8 @@ public class EventsController {
     @RequestMapping(value = "/du{homeNum}",method = RequestMethod.GET,headers = {"Accept=application/json"})
     public @ResponseBody
     DUEventsView getEvents(@PathVariable Integer homeNum){
-        if(events==null) {
-            events = new ArrayList<Events>();
+
+            List<Events> events = new ArrayList<Events>();
 
             Events event = new Events();
             event.setName("Голос ДУ");
@@ -72,7 +49,7 @@ public class EventsController {
 
             events.add(event);
             events.add(event2);
-        }
+
 
         return new DUEventsView(events);
     }
