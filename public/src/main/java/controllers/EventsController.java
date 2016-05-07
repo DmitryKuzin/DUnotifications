@@ -29,6 +29,10 @@ public class EventsController {
 
         System.out.println(event.getName());
         System.out.println(event.getDescription());
+        System.out.println(event.getDt());
+        System.out.println(event.getCurrentParticipantsCount());
+        System.out.println(event.getCoordinates_x());
+        System.out.println(event.getCoordinates_y());
         System.out.println(event.getMaxParticipansCount());
 
         return "ok";
