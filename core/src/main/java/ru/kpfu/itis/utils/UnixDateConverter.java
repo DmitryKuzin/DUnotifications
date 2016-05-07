@@ -1,4 +1,4 @@
-package utils;
+package ru.kpfu.itis.utils;
 
 /**
  * Created by kuzin on 04.05.2016.

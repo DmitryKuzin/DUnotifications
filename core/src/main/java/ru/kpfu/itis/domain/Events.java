@@ -18,18 +18,40 @@ public class Events {
 
     private String name;
 
+    private Integer homeNum;
+
     private String description;
 
+    private Double coordinates_x;
+
+    private Double coordinates_y;
+
+    private Integer currentParticipantsCount;
+
+    private Integer maxParticipansCount;
     //time in seconds from 1970
     private Long dt;
 
-    private String place;
+    public Events(){}
 
-    private int currentParticipantsCount;
+    public Events(Double coordinates_x, Double coordinates_y, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name) {
+        this.coordinates_x = coordinates_x;
+        this.coordinates_y = coordinates_y;
+        this.currentParticipantsCount = currentParticipantsCount;
+        this.description = description;
+        this.dt = dt;
+        this.homeNum = homeNum;
+        this.maxParticipansCount = maxParticipansCount;
+        this.name = name;
+    }
 
-    private int maxParticipansCount;
+    public Integer getHomeNum() {
+        return homeNum;
+    }
 
-
+    public void setHomeNum(Integer homeNum) {
+        this.homeNum = homeNum;
+    }
 
     public int getCurrentParticipantsCount() {
         return currentParticipantsCount;
@@ -37,6 +59,30 @@ public class Events {
 
     public void setCurrentParticipantsCount(int currentParticipantsCount) {
         this.currentParticipantsCount = currentParticipantsCount;
+    }
+
+    public Double getCoordinates_x() {
+        return coordinates_x;
+    }
+
+    public void setCoordinates_x(Double coordinates_x) {
+        this.coordinates_x = coordinates_x;
+    }
+
+    public Double getCoordinates_y() {
+        return coordinates_y;
+    }
+
+    public void setCoordinates_y(Double coordinates_y) {
+        this.coordinates_y = coordinates_y;
+    }
+
+    public void setCurrentParticipantsCount(Integer currentParticipantsCount) {
+        this.currentParticipantsCount = currentParticipantsCount;
+    }
+
+    public void setMaxParticipansCount(Integer maxParticipansCount) {
+        this.maxParticipansCount = maxParticipansCount;
     }
 
     public Long getId() {
@@ -61,14 +107,6 @@ public class Events {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPlace() {
-        return place;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
     }
 
     public String getDescription() {

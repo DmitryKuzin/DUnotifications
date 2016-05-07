@@ -1,15 +1,14 @@
 package controllers;
 
-import org.springframework.http.HttpMethod;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.domain.Events;
-import utils.Event;
-import utils.UnixDateConverter;
+import ru.kpfu.itis.service.EventsService;
+import ru.kpfu.itis.utils.*;
+import ru.kpfu.itis.wrappers.EventsWrapper;
 import views.DUEventsView;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,12 +19,17 @@ import java.util.List;
 public class EventsController {
 
 
-    @RequestMapping(method = RequestMethod.POST,headers = {"Accept=application/json"})
-    public @ResponseBody String setNewEvent(@RequestBody Event event){
+    @Autowired
+    private EventsService eventsService;
 
-        System.out.println(event.eventName);
-        System.out.println(event.eventDescription);
-        System.out.println(event.eventMaxStudents);
+    @RequestMapping(method = RequestMethod.POST,headers = {"Accept=application/json"})
+    public @ResponseBody String setNewEvent(@RequestBody EventsWrapper event){
+
+        eventsService.addNewEvent(event.toEvents());
+
+        System.out.println(event.getName());
+        System.out.println(event.getDescription());
+        System.out.println(event.getMaxParticipansCount());
 
         return "ok";
     }
@@ -35,20 +39,20 @@ public class EventsController {
     public @ResponseBody
     DUEventsView getEvents(@PathVariable Integer homeNum){
 
-            List<Events> events = new ArrayList<Events>();
-
-            Events event = new Events();
-            event.setName("Голос ДУ");
-            event.setDescription("Сегодня в доме 11а состоится Голос ДУ!");
-            event.setDt(UnixDateConverter.milisToSecs(new Date().getTime()) + 1000L);
-            Events event2 = new Events();
-            event2.setName("Идем в кино на первого мстителя");
-            event2.setDescription("Если вы хотите сходить завтра вечером на премьеру фильма первый мститель гражданская война, напишите мне на почту potter@hogwards.wiz");
-            event2.setDt(UnixDateConverter.milisToSecs(new Date().getTime()) + 87000L);
+            List<Events> events = eventsService.getEventsByHomeNum(3);
 
 
-            events.add(event);
-            events.add(event2);
+
+//            Events event = new Events();
+//            event.setName("Голос ДУ");
+//            event.setDescription("Сегодня в доме 11а состоится Голос ДУ!");
+//            event.setDt(UnixDateConverter.milisToSecs(new Date().getTime()) + 1000L);
+//            Events event2 = new Events();
+//            event2.setName("Идем в кино на первого мстителя");
+//            event2.setDescription("Если вы хотите сходить завтра вечером на премьеру фильма первый мститель гражданская война, напишите мне на почту potter@hogwards.wiz");
+//            event2.setDt(UnixDateConverter.milisToSecs(new Date().getTime()) + 87000L);
+//            events.add(event);
+//            events.add(event2);
 
 
         return new DUEventsView(events);

@@ -15,20 +15,49 @@ public class Users {
 
     private String username;
 
+    private String fio;
+
+    private String email;
+
+    private String address;
+
     private String hash_pass;
 
     private String avatar;
 
     private String role;
 
-//    private List<Events> visitedevents;
-//
-//    private List<Events> userEvents;
+    private String token;
 
     private int rating;
 
+
     public String getAvatar() {
         return avatar;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFio() {
+        return fio;
+    }
+
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
     public void setAvatar(String avatar) {
