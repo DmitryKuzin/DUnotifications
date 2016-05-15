@@ -22,6 +22,12 @@ public class AuthController {
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public @ResponseBody String authrorize(Credentials credentials){
 
+        System.out.println("authrorize()");
+        System.out.println("credentials:");
+        System.out.println(credentials.getEmail());
+        System.out.println(credentials.getHash_pass());
+
+
         Users user=usersService.checkCredentials(credentials);
 
         if(user==null){
