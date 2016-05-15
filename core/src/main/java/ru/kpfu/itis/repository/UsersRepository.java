@@ -12,4 +12,6 @@ public interface UsersRepository {
 
     Users getUserByLogin(String login);
 
+    void updateUser(Users user);
+
 }

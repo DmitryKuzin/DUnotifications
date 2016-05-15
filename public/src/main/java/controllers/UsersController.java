@@ -22,7 +22,7 @@ public class UsersController {
     //registration
     @RequestMapping(value = "/signup",method = RequestMethod.POST,headers = {"Accept=application/json"})
     public @ResponseBody
-    String addNewUser(@RequestBody Users user){
+    Users addNewUser(@RequestBody Users user){
 
         System.out.println("addNewUser method");
         System.out.println("new user info:");
@@ -30,7 +30,7 @@ public class UsersController {
         System.out.println(user.getHash_pass());
         usersService.addNewUser(user);
 
-        return "ok";
+        return user;
     }
 
 

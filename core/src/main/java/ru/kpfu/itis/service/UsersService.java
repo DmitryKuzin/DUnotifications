@@ -20,11 +20,26 @@ public class UsersService {
         ur.addNewUser(user);
     }
 
-    public boolean checkCredentials(Credentials credentials){
-        //TODO if exception check here
-        if (ur.getUserByLogin(credentials.getLogin())!=null){
-            return false;
+    //проверка почты и пароля при авторизации
+    public Users checkCredentials(Credentials credentials){
+
+        Users user=ur.getUserByLogin(credentials.getEmail());
+
+        if (user!=null){
+            if(user.getHash_pass().equals(credentials.getHash_pass())){
+                return user;
+            }
         }
-        return true;
+        return null;
     }
+
+    public Users getUserByLogin(String login){
+        return ur.getUserByLogin(login);
+    }
+
+    public void updateUser(Users user){
+        ur.updateUser(user);
+    }
+
+
 }

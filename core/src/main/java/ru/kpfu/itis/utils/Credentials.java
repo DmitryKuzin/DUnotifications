@@ -5,18 +5,15 @@ package ru.kpfu.itis.utils;
  */
 public class Credentials {
 
-    private String login;
-
     private String email;
 
-    private String pass;
+    private String hash_pass;
 
     public Credentials() {}
 
-    public Credentials(String email, String login, String pass) {
+    public Credentials(String email, String hash_pass) {
         this.email = email;
-        this.login = login;
-        this.pass = pass;
+        this.hash_pass = hash_pass;
     }
 
     public String getEmail() {
@@ -27,19 +24,11 @@ public class Credentials {
         this.email = email;
     }
 
-    public String getLogin() {
-        return login;
+    public String getHash_pass() {
+        return hash_pass;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setHash_pass(String hash_pass) {
+        this.hash_pass = hash_pass;
     }
 }
