@@ -20,15 +20,15 @@ public class AuthController {
     private UsersService usersService;
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public @ResponseBody String authrorize(Credentials credentials){
+    public @ResponseBody String authrorize(String email,String hash_pass){
 
         System.out.println("authrorize()");
         System.out.println("credentials:");
-        System.out.println(credentials.getEmail());
-        System.out.println(credentials.getHash_pass());
+        System.out.println(email);
+        System.out.println(hash_pass);
 
 
-        Users user=usersService.checkCredentials(credentials);
+        Users user=usersService.checkCredentials(new Credentials(email,hash_pass));
 
         if(user==null){
             return "bad credentials";
