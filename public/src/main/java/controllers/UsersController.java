@@ -28,6 +28,7 @@ public class UsersController {
         System.out.println("new user info:");
         System.out.println(user.getEmail());
         System.out.println(user.getHash_pass());
+        user.setRole(Roles.ROLE_USER.toString());
         usersService.addNewUser(user);
 
         return user;

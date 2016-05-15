@@ -38,6 +38,7 @@ public class AuthController {
         String access_token=make(user.getRole());
         user.setToken(access_token);
         usersService.updateUser(user);
+        System.out.println(access_token);
         return access_token;
     }
 
