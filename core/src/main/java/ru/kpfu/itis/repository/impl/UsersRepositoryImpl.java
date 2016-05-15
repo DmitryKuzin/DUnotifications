@@ -24,7 +24,7 @@ public class UsersRepositoryImpl  implements UsersRepository {
 
     public Users getUserByLogin(String login) {
         return (Users)sessionFactory.getCurrentSession().createCriteria(Users.class)
-                .add(Restrictions.eq("login", login)).uniqueResult();
+                .add(Restrictions.eq("email", login)).uniqueResult();
     }
 
     public void updateUser(Users user) {
