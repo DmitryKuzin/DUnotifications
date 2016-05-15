@@ -21,7 +21,7 @@ public class AuthController {
     private UsersService usersService;
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public @ResponseBody String authrorize(@RequestBody Credentials credentials){
+    public @ResponseBody Users authrorize(@RequestBody Credentials credentials){
 
         System.out.println("authrorize()");
         System.out.println("credentials:");
@@ -32,14 +32,14 @@ public class AuthController {
         Users user=usersService.checkCredentials(credentials);
 
         if(user==null){
-            return "bad credentials";
+            return null;
         }
 
         String access_token=make(user.getRole());
         user.setToken(access_token);
         usersService.updateUser(user);
         System.out.println(access_token);
-        return access_token;
+        return user;
     }
 
 }
