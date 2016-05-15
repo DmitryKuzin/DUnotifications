@@ -12,5 +12,10 @@
 
     <import resource="classpath*:core.xml"/>
     <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+    <bean class="java.net.URI" id="dbUrl">
+        <constructor-arg value="${DATABASE_URL}"/>
+    </bean>
+    
+
 
 </beans>

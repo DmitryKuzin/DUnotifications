@@ -16,11 +16,15 @@ public class UsersService {
     private UsersRepository ur;
 
 
-//    public void addNewUser(Users user){
-//        ur.addNewUser(user);
-//    }
-//
-//    public boolean checkCredentials(Credentials credentials){
-//        ur.getUserByLogin(credentials.getLogin());
-//    }
+    public void addNewUser(Users user){
+        ur.addNewUser(user);
+    }
+
+    public boolean checkCredentials(Credentials credentials){
+        //TODO if exception check here
+        if (ur.getUserByLogin(credentials.getLogin())!=null){
+            return false;
+        }
+        return true;
+    }
 }
