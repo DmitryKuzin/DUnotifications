@@ -2,6 +2,7 @@ package controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,15 +21,15 @@ public class AuthController {
     private UsersService usersService;
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public @ResponseBody String authrorize(String email,String hash_pass){
+    public @ResponseBody String authrorize(@RequestBody Credentials credentials){
 
         System.out.println("authrorize()");
         System.out.println("credentials:");
-        System.out.println(email);
-        System.out.println(hash_pass);
+        System.out.println(credentials.getEmail());
+        System.out.println(credentials.getHash_pass());
 
 
-        Users user=usersService.checkCredentials(new Credentials(email,hash_pass));
+        Users user=usersService.checkCredentials(credentials);
 
         if(user==null){
             return "bad credentials";
