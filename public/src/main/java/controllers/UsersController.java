@@ -35,15 +35,15 @@ public class UsersController {
 
 
 //    проверка логина и пароля на совпадение с бд
-    @RequestMapping(value = "/check",method = RequestMethod.POST,headers = {"Accept=application/json"})
-    public @ResponseBody
-    String checkCredentials(@RequestBody Credentials creds){
-
-
-        //не упусти иньекцию
-        if(usersService.checkCredentials(creds)){
-            return "ok";
-        }
-        return "not ok";
-    }
+//    @RequestMapping(value = "/check",method = RequestMethod.POST,headers = {"Accept=application/json"})
+//    public @ResponseBody
+//    String checkCredentials(@RequestBody Credentials creds){
+//
+//
+//        //не упусти иньекцию
+//        if(usersService.checkCredentials(creds)){
+//            return "ok";
+//        }
+//        return "not ok";
+//    }
 }
