@@ -14,14 +14,13 @@ import ru.kpfu.itis.utils.*;
  * Created by kuzin on 07.05.2016.
  */
 @Controller
-@RequestMapping(value = "/users")
 public class UsersController {
 
     @Autowired
     private UsersService usersService;
 
     //registration
-    @RequestMapping(method = RequestMethod.POST,headers = {"Accept=application/json"})
+    @RequestMapping(value = "/signup",method = RequestMethod.POST,headers = {"Accept=application/json"})
     public @ResponseBody
     String addNewUser(@RequestBody Users user){
 
