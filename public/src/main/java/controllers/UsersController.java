@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.service.UsersService;
 import ru.kpfu.itis.utils.*;
+import static ru.kpfu.itis.utils.TokenRenderer.*;
 
 /**
  * Created by kuzin on 07.05.2016.
@@ -29,6 +30,7 @@ public class UsersController {
         System.out.println(user.getEmail());
         System.out.println(user.getHash_pass());
         user.setRole(Roles.ROLE_USER.toString());
+        user.setToken(make(Roles.ROLE_USER.toString()));
         usersService.addNewUser(user);
 
         return user;
