@@ -35,6 +35,6 @@ public class EventsRepositoryImpl implements EventsRepository {
     }
 
     public List<Events> getAllEvents(Long time){
-        return sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.eq("dt",time)).list();
+        return sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.ge("dt",time)).list();
     }
 }
