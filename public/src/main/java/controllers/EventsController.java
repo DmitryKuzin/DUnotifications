@@ -13,6 +13,7 @@ import views.DUUsersView;
 
 import static utils.FinalVariables.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -88,7 +89,7 @@ public class EventsController extends BaseController{
 //            events.add(event2);
 
 
-        return new DUEventsView();
+        return new DUEventsView(new ArrayList<Events>());
 //        return new DUEventsView(events);
     }
 
