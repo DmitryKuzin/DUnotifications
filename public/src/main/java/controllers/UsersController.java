@@ -39,7 +39,7 @@ public class UsersController extends BaseController {
         System.out.println(user.getHash_pass());
 
         if(usersService.checkCredentials(new Credentials(user.getEmail(),user.getHash_pass()))!=null){
-            System.out.println("Зарегистрированный пользователь пытался зарегистрироваться вновь.");
+            System.out.println("Зарегистрированный пользователь пытался зарегистрироваться вновь!");
             return null;
         }
 
