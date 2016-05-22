@@ -14,6 +14,23 @@ import java.util.List;
  */
 public class UsersWrapper {
 
+
+    public UsersWrapper() {
+    }
+
+    public UsersWrapper(Users user) {
+        this.address=user.getAddress();
+        this.avatar=user.getAvatar();
+        this.email=user.getEmail();
+        this.fio=user.getFio();
+        this.id=user.getId();
+        this.hash_pass=user.getHash_pass();
+        this.rating=user.getRating();
+        this.role=user.getRole();
+        this.username=user.getUsername();
+        this.token=user.getToken();
+    }
+
     private Long id;
 
     private String username;

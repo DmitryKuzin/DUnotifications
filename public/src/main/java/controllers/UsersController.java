@@ -28,7 +28,7 @@ public class UsersController extends BaseController {
     //registration
     @RequestMapping(value = "/signup",method = RequestMethod.POST,headers = {"Accept=application/json"})
     public @ResponseBody
-    Users addNewUser(@RequestBody UsersWrapper u){
+    UsersWrapper addNewUser(@RequestBody UsersWrapper u){
         Users user=u.toUsers();
 
         user.setHash_pass(encode(user.getHash_pass()));
@@ -47,7 +47,7 @@ public class UsersController extends BaseController {
         user.setToken(make(Roles.ROLE_USER.toString()));
         usersService.addNewUser(user);
         request.getSession().setAttribute(USER_IN_SESSION,user);
-        return user;
+        return new UsersWrapper(user);
     }
 
 }
