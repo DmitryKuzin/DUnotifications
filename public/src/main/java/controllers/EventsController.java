@@ -141,10 +141,14 @@ public class EventsController extends BaseController{
         eve.setCurrentParticipantsCount(++count);
         Users u= (Users) request.getSession().getAttribute(USER_IN_SESSION);
 
-        if(u.getToken().equals(rb.getToken())){
-            System.out.println("tokens is equal in willGo method");
+        if(u.getToken()!=null){
+            System.out.println("session user token is :"+ u.getToken());
+            System.out.println("request user token is :"+rb.getToken());
+            System.out.println(u.getId());
         }else{
-            System.out.println("tokens is NOT equal in willGo method");
+            System.out.println("session user token is : null");
+            System.out.println("request user token is :"+rb.getToken());
+            System.out.println(u.getId());
         }
 
         return new EventsWrapper(eve);
