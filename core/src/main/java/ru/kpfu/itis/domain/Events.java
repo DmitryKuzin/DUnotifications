@@ -29,9 +29,7 @@ public class Events {
             mappedBy = "user_id")
     private List<Events_Users> checkedInUsers;
 
-    private Double coordinates_x;
-
-    private Double coordinates_y;
+    private String place;
 
     private Integer currentParticipantsCount;
 
@@ -41,9 +39,8 @@ public class Events {
 
     public Events(){}
 
-    public Events(Double coordinates_x, Double coordinates_y, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name) {
-        this.coordinates_x = coordinates_x;
-        this.coordinates_y = coordinates_y;
+    public Events(String place, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name) {
+        this.place=place;
         this.currentParticipantsCount = currentParticipantsCount;
         this.description = description;
         this.dt = dt;
@@ -53,9 +50,8 @@ public class Events {
 
     }
 
-    public Events(Double coordinates_x, Double coordinates_y, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name,Users author) {
-        this.coordinates_x = coordinates_x;
-        this.coordinates_y = coordinates_y;
+    public Events(String place, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name,Users author) {
+        this.place=place;
         this.currentParticipantsCount = currentParticipantsCount;
         this.description = description;
         this.dt = dt;
@@ -125,20 +121,12 @@ public class Events {
         this.author = author;
     }
 
-    public Double getCoordinates_x() {
-        return coordinates_x;
+    public String getPlace() {
+        return place;
     }
 
-    public void setCoordinates_x(Double coordinates_x) {
-        this.coordinates_x = coordinates_x;
-    }
-
-    public Double getCoordinates_y() {
-        return coordinates_y;
-    }
-
-    public void setCoordinates_y(Double coordinates_y) {
-        this.coordinates_y = coordinates_y;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public Integer getCurrentParticipantsCount() {

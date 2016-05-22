@@ -135,6 +135,11 @@ public class EventsController extends BaseController{
         System.out.println("willgo token: "+rb.getToken());
         System.out.println("willgo event_id: "+rb.getEvent_id());
         Events eve=eventsService.getEventById(rb.getEvent_id());
+        Integer count=eve.getCurrentParticipantsCount();
+        if(count==null){
+            count=0;
+        }
+        eve.setCurrentParticipantsCount(++count);
         Users u= (Users) request.getSession().getAttribute(USER_IN_SESSION);
 
         if(u.getToken().equals(rb.getToken())){

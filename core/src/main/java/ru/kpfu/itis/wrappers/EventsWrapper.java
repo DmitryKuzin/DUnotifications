@@ -10,9 +10,7 @@ import java.io.Serializable;
  */
 public class EventsWrapper implements Serializable {
 
-    private Double coordinates_x;
-
-    private Double coordinates_y;
+    private String place;
 
     private String description;
 
@@ -29,8 +27,7 @@ public class EventsWrapper implements Serializable {
     public EventsWrapper(){}
 
     public EventsWrapper(Events e) {
-        this.coordinates_x = e.getCoordinates_x();
-        this.coordinates_y = e.getCoordinates_y();
+        this.place=e.getPlace();
         this.currentParticipantsCount = e.getCurrentParticipantsCount();
         this.description = e.getDescription();
         this.dt = e.getDt();
@@ -40,24 +37,16 @@ public class EventsWrapper implements Serializable {
     }
 
     public Events toEvents(){
-        return new Events(coordinates_x,coordinates_y,currentParticipantsCount,description,dt,3
+        return new Events(place,currentParticipantsCount,description,dt,3
         ,maxParticipansCount,name);
     }
 
-    public Double getCoordinates_x() {
-        return coordinates_x;
+    public String getPlace() {
+        return place;
     }
 
-    public void setCoordinates_x(Double coordinates_x) {
-        this.coordinates_x = coordinates_x;
-    }
-
-    public Double getCoordinates_y() {
-        return coordinates_y;
-    }
-
-    public void setCoordinates_y(Double coordinates_y) {
-        this.coordinates_y = coordinates_y;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public Integer getCurrentParticipantsCount() {
