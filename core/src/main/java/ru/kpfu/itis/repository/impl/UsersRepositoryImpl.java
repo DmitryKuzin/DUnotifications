@@ -52,4 +52,8 @@ public class UsersRepositoryImpl  implements UsersRepository {
         }
         return users;
     }
+
+    public Users getUserByToken(String token) {
+        return (Users) sessionFactory.getCurrentSession().createCriteria(Users.class).add(Restrictions.eq("token",token)).uniqueResult();
+    }
 }

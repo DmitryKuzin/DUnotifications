@@ -51,4 +51,6 @@ public class UsersService {
         return ur.getUsersByEvent(eventID);
     }
 
+    public Users getUserByToken(String token){return ur.getUserByToken(token);}
+
 }

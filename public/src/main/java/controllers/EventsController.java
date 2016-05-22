@@ -132,28 +132,17 @@ public class EventsController extends BaseController{
     @RequestMapping(value = "/willgo",method = RequestMethod.POST,headers = {"Accept=application/json"})
     public @ResponseBody EventsWrapper willGo(@RequestBody WillGoRequestBody rb){
 
-        System.out.println("willgo token: "+rb.getToken());
-        System.out.println("willgo event_id: "+rb.getEvent_id());
         Events eve=eventsService.getEventById(rb.getEvent_id());
         Integer count=eve.getCurrentParticipantsCount();
         if(count==null){
             count=0;
         }
         eve.setCurrentParticipantsCount(++count);
-        Users u= (Users) request.getSession().getAttribute(USER_IN_SESSION);
+        Users u= usersService.getUserByToken(rb.getToken());
 
-        if(u!=null){
-            System.out.println("session user token is :"+ u.getToken());
-            System.out.println("request user token is :"+rb.getToken());
-            if(u.getEmail()!=null){
-                System.out.println(u.getEmail());
-            }else{
-                System.out.println("user is totally null");
-            }
-        }else{
-            System.out.println("session user is : null");
-            System.out.println("request user token is :"+rb.getToken());
-        }
+
+        eventsService.updateEvent(eve);
+        eventsService.checkIn(u,eve);
 
         return new EventsWrapper(eve);
     }

@@ -27,6 +27,10 @@ public class EventsRepositoryImpl implements EventsRepository {
         sessionFactory.getCurrentSession().save(event);
     }
 
+    public void updateEvent(Events eve) {
+        sessionFactory.getCurrentSession().update(eve);
+    }
+
     public List<Events> getEventsByHomeNum(Integer homeNum,Long time) {
         return sessionFactory.getCurrentSession().createCriteria(Events.class)
                 .add(Restrictions.eq("homeNum", homeNum)).add(Restrictions.ge("dt",time)).list();

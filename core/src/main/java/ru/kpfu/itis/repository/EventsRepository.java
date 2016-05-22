@@ -22,4 +22,6 @@ public interface EventsRepository {
     Events getEventById(Long event_ID);
 
     void checkIn(Users user,Events event);
+
+    void updateEvent(Events eve);
 }

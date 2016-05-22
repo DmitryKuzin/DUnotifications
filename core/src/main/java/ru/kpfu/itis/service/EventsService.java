@@ -44,7 +44,11 @@ public class EventsService {
     }
 
     public void checkIn(Users user,Events event){
+        er.checkIn(user,event);
+    }
 
+    public void updateEvent(Events eve){
+        er.updateEvent(eve);
     }
 
 }
