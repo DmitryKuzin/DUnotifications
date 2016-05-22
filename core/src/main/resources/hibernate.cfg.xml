@@ -10,6 +10,7 @@
         <mapping package="ru.kpfu.itis.domain"/>
         <mapping class="ru.kpfu.itis.domain.Users"/>
         <mapping class="ru.kpfu.itis.domain.Events"/>
+        <mapping class="ru.kpfu.itis.domain.Events_Users"/>
 
     </session-factory>
 
