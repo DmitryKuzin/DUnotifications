@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kpfu.itis.domain.Events;
+import ru.kpfu.itis.domain.Events_Users;
 import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.repository.EventsRepository;
 
@@ -37,5 +38,15 @@ public class EventsRepositoryImpl implements EventsRepository {
 
     public List<Events> getAllEvents(Long time){
         return sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.gt("dt",time)).list();
+    }
+
+    public Events getEventById(Long event_ID) {
+        return (Events) sessionFactory.getCurrentSession().load(Events.class,event_ID);
+    }
+    public void checkIn(Users user,Events event){
+        Events_Users eu=new Events_Users();
+        eu.setEvent_id(event);
+        eu.setUser_id(user);
+        sessionFactory.getCurrentSession().save(eu);
     }
 }

@@ -36,11 +36,11 @@ public class Users {
             mappedBy = "author")
     private List<Events> usersEvents;
 
-    //посещенные пользователем мероприятия
+    //лист событий на которые пойдет или ходил пользователь
     @OneToMany(cascade = CascadeType.REFRESH,
             fetch = FetchType.LAZY,
             mappedBy = "event_id")
-    private List<Events_Users> attendedEvents;
+    private List<Events_Users> checkedInEvents;
 
     public Users(){}
 
@@ -146,10 +146,10 @@ public class Users {
     }
 
     public List<Events_Users> getAttendedEvents() {
-        return attendedEvents;
+        return checkedInEvents;
     }
 
     public void setAttendedEvents(List<Events_Users> attendedEvents) {
-        this.attendedEvents = attendedEvents;
+        this.checkedInEvents = attendedEvents;
     }
 }

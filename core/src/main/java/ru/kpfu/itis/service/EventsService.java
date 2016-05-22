@@ -38,4 +38,12 @@ public class EventsService {
         return er.getAllEvents(time);
     }
 
+    public Events getEventById(Long event_ID){
+        return er.getEventById(event_ID);
+    }
+
+    public void checkIn(Users user,Events event){
+
+    }
+
 }

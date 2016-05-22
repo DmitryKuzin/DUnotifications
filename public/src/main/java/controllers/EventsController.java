@@ -32,10 +32,7 @@ public class EventsController extends BaseController{
 
     @RequestMapping(value = "/all",method = RequestMethod.GET,headers = {"Accept=application/json"})
     public @ResponseBody DUEventsView getAllEvents() {
-
-
         List<Events> events=eventsService.getAllEvents();
-        System.out.println("кол-во событий:"+events.size());
         return new DUEventsView(events);
     }
 
@@ -75,20 +72,6 @@ public class EventsController extends BaseController{
             if(user!=null) {
                 events = eventsService.getEventsByHomeNum(3);
             }
-
-
-//            Events event = new Events();
-//            event.setName("Голос ДУ");
-//            event.setDescription("Сегодня в доме 11а состоится Голос ДУ!");
-//            event.setDt(UnixDateConverter.milisToSecs(new Date().getTime()) + 1000L);
-//            Events event2 = new Events();
-//            event2.setName("Идем в кино на первого мстителя");
-//            event2.setDescription("Если вы хотите сходить завтра вечером на премьеру фильма первый мститель гражданская война, напишите мне на почту potter@hogwards.wiz");
-//            event2.setDt(UnixDateConverter.milisToSecs(new Date().getTime()) + 87000L);
-//            events.add(event);
-//            events.add(event2);
-
-
         return new DUEventsView(new ArrayList<Events>());
 //        return new DUEventsView(events);
     }
@@ -142,6 +125,21 @@ public class EventsController extends BaseController{
         return new DUEventsView(events);
     }
 
+    /**
+     * user's checking in
+     */
+    @RequestMapping(value = "/willgo",method = RequestMethod.POST,headers = {"Accept=application/json"})
+    public @ResponseBody EventsWrapper willGo(String token,Long event_id){
+        Events eve=eventsService.getEventById(event_id);
+        Users u= (Users) request.getSession().getAttribute(USER_IN_SESSION);
 
+        if(u.getToken().equals(token)){
+            System.out.println("tokens is equal in willGo method");
+        }else{
+            System.out.println("tokens is NOT equal in willGo method");
+        }
+
+        return new EventsWrapper(eve);
+    }
 
 }

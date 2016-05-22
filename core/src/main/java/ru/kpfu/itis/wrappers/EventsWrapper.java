@@ -26,7 +26,19 @@ public class EventsWrapper implements Serializable {
 
     private Integer currentParticipantsCount;
 
-    
+    public EventsWrapper(){}
+
+    public EventsWrapper(Events e) {
+        this.coordinates_x = e.getCoordinates_x();
+        this.coordinates_y = e.getCoordinates_y();
+        this.currentParticipantsCount = e.getCurrentParticipantsCount();
+        this.description = e.getDescription();
+        this.dt = e.getDt();
+        this.id = e.getId();
+        this.maxParticipansCount = e.getMaxParticipansCount();
+        this.name = e.getName();
+    }
+
     public Events toEvents(){
         return new Events(coordinates_x,coordinates_y,currentParticipantsCount,description,dt,3
         ,maxParticipansCount,name);

@@ -18,4 +18,8 @@ public interface EventsRepository {
     List<Events> getEventsByAuthor(Users user);
 
     List<Events> getAllEvents(Long time);
+
+    Events getEventById(Long event_ID);
+
+    void checkIn(Users user,Events event);
 }
