@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.service.UsersService;
 import ru.kpfu.itis.utils.Credentials;
+import ru.kpfu.itis.wrappers.UsersWrapper;
+
 import static ru.kpfu.itis.utils.TokenRenderer.*;
 
 /**
@@ -21,7 +23,8 @@ public class AuthController {
     private UsersService usersService;
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public @ResponseBody Users authrorize(@RequestBody Credentials credentials){
+    public @ResponseBody
+    UsersWrapper authrorize(@RequestBody Credentials credentials){
 
         System.out.println("authrorize()");
         System.out.println("credentials:");
@@ -39,7 +42,7 @@ public class AuthController {
         user.setToken(access_token);
         usersService.updateUser(user);
         System.out.println(access_token);
-        return user;
+        return new UsersWrapper(user);
     }
 
 }
