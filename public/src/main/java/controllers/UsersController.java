@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.service.UsersService;
 import ru.kpfu.itis.utils.*;
+import ru.kpfu.itis.wrappers.UsersWrapper;
 import utils.SHAEncoder;
 import static utils.FinalVariables.*;
 
@@ -27,7 +28,8 @@ public class UsersController extends BaseController {
     //registration
     @RequestMapping(value = "/signup",method = RequestMethod.POST,headers = {"Accept=application/json"})
     public @ResponseBody
-    Users addNewUser(@RequestBody Users user){
+    Users addNewUser(@RequestBody UsersWrapper u){
+        Users user=u.toUsers();
 
         user.setHash_pass(encode(user.getHash_pass()));
 

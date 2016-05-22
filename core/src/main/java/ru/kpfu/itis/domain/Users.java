@@ -42,6 +42,19 @@ public class Users {
             mappedBy = "event_id")
     private List<Events_Users> attendedEvents;
 
+
+    public Users(String address, String avatar, String email, String fio, String hash_pass, int rating, String role, String token, String username) {
+        this.address = address;
+        this.avatar = avatar;
+        this.email = email;
+        this.fio = fio;
+        this.hash_pass = hash_pass;
+        this.rating = rating;
+        this.role = role;
+        this.token = token;
+        this.username = username;
+    }
+
     public String getAvatar() {
         return avatar;
     }
