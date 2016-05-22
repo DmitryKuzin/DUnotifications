@@ -36,16 +36,6 @@ public class EventsRepositoryImpl implements EventsRepository {
     }
 
     public List<Events> getAllEvents(Long time){
-//        return sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.gt("dt",time)).list();
-        List<Events> events=null;
-        try {
-            SQLQuery sqlQuery = sessionFactory.getCurrentSession().createSQLQuery("select * from events where dt>="+time)
-                    .addEntity(Events.class);
-            events = sqlQuery.list();
-        } catch (Exception e) {
-            System.out.println("ошибка в getAllEvents()");
-        }
-
-        return events;
+        return sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.gt("dt",time)).list();
     }
 }
