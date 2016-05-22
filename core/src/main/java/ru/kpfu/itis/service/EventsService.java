@@ -33,7 +33,9 @@ public class EventsService {
     }
 
     public List<Events> getAllEvents(){
-        return er.getAllEvents(System.currentTimeMillis()-(15L*60L*1000L));
+        Long time=System.currentTimeMillis()-(15L*60L*1000L);
+        System.out.println("текущее время в миллисекундах: "+time);
+        return er.getAllEvents(time);
     }
 
 }
