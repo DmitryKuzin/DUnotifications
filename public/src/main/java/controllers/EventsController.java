@@ -88,7 +88,8 @@ public class EventsController extends BaseController{
 //            events.add(event2);
 
 
-        return new DUEventsView(events);
+        return new DUEventsView();
+//        return new DUEventsView(events);
     }
 
 
