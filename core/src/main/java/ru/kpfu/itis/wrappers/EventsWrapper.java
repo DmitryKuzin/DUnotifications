@@ -24,6 +24,8 @@ public class EventsWrapper implements Serializable {
 
     private Integer currentParticipantsCount;
 
+    private Integer homeNum;
+
     public EventsWrapper(){}
 
     public EventsWrapper(Events e) {
@@ -34,11 +36,12 @@ public class EventsWrapper implements Serializable {
         this.id = e.getId();
         this.maxParticipansCount = e.getMaxParticipansCount();
         this.name = e.getName();
+        this.homeNum=e.getHomeNum();
     }
 
     public Events toEvents(){
-        return new Events(place,currentParticipantsCount,description,dt,3
-        ,maxParticipansCount,name);
+        return new Events(this.place,this.currentParticipantsCount,this.description,this.dt,this.homeNum
+        ,this.maxParticipansCount,this.name);
     }
 
     public String getPlace() {

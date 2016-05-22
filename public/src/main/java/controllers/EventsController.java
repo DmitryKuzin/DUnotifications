@@ -44,6 +44,7 @@ public class EventsController extends BaseController{
         Events e=event.toEvents();
         Users author=(Users) request.getSession().getAttribute(USER_IN_SESSION);
         if(author!=null) {
+            System.out.println(author.getEmail());
             e.setAuthor(author);
         }
         eventsService.addNewEvent(e);
@@ -144,11 +145,14 @@ public class EventsController extends BaseController{
         if(u.getToken()!=null){
             System.out.println("session user token is :"+ u.getToken());
             System.out.println("request user token is :"+rb.getToken());
-            System.out.println(u.getId());
+            if(u.getEmail()!=null){
+                System.out.println(u.getEmail());
+            }else{
+                System.out.println("user is totally null");
+            }
         }else{
             System.out.println("session user token is : null");
             System.out.println("request user token is :"+rb.getToken());
-            System.out.println(u.getId());
         }
 
         return new EventsWrapper(eve);
