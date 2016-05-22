@@ -33,8 +33,9 @@ public class UsersRepositoryImpl  implements UsersRepository {
         try {
             user = (Users) sessionFactory.getCurrentSession().createCriteria(Users.class)
                     .add(Restrictions.eq("email", login)).uniqueResult();
+
         }catch (NonUniqueResultException nonUniq){
-            System.err.println("Таких пользователей несколько!!!!!");
+            System.out.println("Таких пользователей несколько!!!!!");
         }
         return user;
     }

@@ -28,7 +28,9 @@ public class UsersService {
         Users user=ur.getUserByLogin(credentials.getEmail());
 
         if (user!=null){
+            System.out.println("user email from checkCredentials"+user.getEmail());
             if(user.getHash_pass().equals(credentials.getHash_pass())){
+                System.out.println("возвращает пользователя");
                 return user;
             }
         }
