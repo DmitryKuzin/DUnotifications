@@ -34,7 +34,7 @@ public class AuthController {
 
         Users user=usersService.checkCredentials(credentials);
 
-        if(user==null){
+        if(user!=null){
             return null;
         }
 
