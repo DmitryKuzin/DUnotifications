@@ -1,5 +1,6 @@
 package ru.kpfu.itis.repository.impl;
 
+import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,16 @@ public class EventsRepositoryImpl implements EventsRepository {
     }
 
     public List<Events> getAllEvents(Long time){
-        return sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.gt("dt",time)).list();
+//        return sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.gt("dt",time)).list();
+        List<Events> events=null;
+        try {
+            SQLQuery sqlQuery = sessionFactory.getCurrentSession().createSQLQuery("select * from events where dt>="+time)
+                    .addEntity(Events.class);
+            events = sqlQuery.list();
+        } catch (Exception e) {
+            System.out.println("ошибка в getAllEvents()");
+        }
+
+        return events;
     }
 }
