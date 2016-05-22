@@ -7,16 +7,15 @@ import ru.kpfu.itis.domain.Users;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by kuzin on 07.05.2016.
  */
-public class UsersWrapper {
+public class UsersWrapper implements Serializable{
 
-
-    public UsersWrapper() {
-    }
+    public UsersWrapper(){}
 
     public UsersWrapper(Users user) {
         this.address=user.getAddress();
