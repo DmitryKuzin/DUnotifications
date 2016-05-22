@@ -31,16 +31,19 @@ public class AuthController {
         System.out.println(credentials.getEmail());
         System.out.println(credentials.getHash_pass());
 
-
+        System.out.println("1");
         Users user=usersService.checkCredentials(credentials);
-
+        System.out.println("2");
         if(user==null){
             return null;
         }
-
+        System.out.println("3");
         String access_token=make(user.getRole());
+        System.out.println("4");
         user.setToken(access_token);
+        System.out.println("5");
         usersService.updateUser(user);
+        System.out.println("6");
         System.out.println(access_token);
         return new UsersWrapper(user);
     }
