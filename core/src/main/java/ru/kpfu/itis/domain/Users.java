@@ -36,6 +36,11 @@ public class Users {
             mappedBy = "author")
     private List<Events> usersEvents;
 
+    //посещенные пользователем мероприятия
+    @OneToMany(cascade = CascadeType.REFRESH,
+            fetch = FetchType.LAZY,
+            mappedBy = "event_id")
+    private List<Events_Users> attendedEvents;
 
     public String getAvatar() {
         return avatar;
@@ -123,5 +128,13 @@ public class Users {
 
     public void setUsersEvents(List<Events> usersEvents) {
         this.usersEvents = usersEvents;
+    }
+
+    public List<Events_Users> getAttendedEvents() {
+        return attendedEvents;
+    }
+
+    public void setAttendedEvents(List<Events_Users> attendedEvents) {
+        this.attendedEvents = attendedEvents;
     }
 }

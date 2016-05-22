@@ -2,6 +2,7 @@ package ru.kpfu.itis.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by kuzin on 28.04.2016.
@@ -22,6 +23,11 @@ public class Events {
     @ManyToOne(cascade = {CascadeType.REFRESH},
             fetch = FetchType.LAZY)
     private Users author;
+
+    @OneToMany(cascade = CascadeType.REFRESH,
+            fetch = FetchType.LAZY,
+            mappedBy = "user_id")
+    private List<Events_Users> checkedInUsers;
 
     private Double coordinates_x;
 
@@ -157,5 +163,13 @@ public class Events {
 
     public void setCurrentParticipantsCount(Integer currentParticipantsCount) {
         this.currentParticipantsCount = currentParticipantsCount;
+    }
+
+    public List<Events_Users> getCheckedInUsers() {
+        return checkedInUsers;
+    }
+
+    public void setCheckedInUsers(List<Events_Users> checkedInUsers) {
+        this.checkedInUsers = checkedInUsers;
     }
 }

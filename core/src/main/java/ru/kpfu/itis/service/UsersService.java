@@ -6,6 +6,8 @@ import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.repository.UsersRepository;
 import ru.kpfu.itis.utils.*;
 
+import java.util.List;
+
 /**
  * Created by kuzin on 07.05.2016.
  */
@@ -41,5 +43,8 @@ public class UsersService {
         ur.updateUser(user);
     }
 
+    public List<Users> getUsersByEvent(Integer eventID){
+        return ur.getUsersByEvent(eventID);
+    }
 
 }
