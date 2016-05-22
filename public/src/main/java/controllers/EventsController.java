@@ -10,6 +10,7 @@ import ru.kpfu.itis.service.UsersService;
 import ru.kpfu.itis.wrappers.EventsWrapper;
 import views.DUEventsView;
 import views.DUUsersView;
+import views.WillGoRequestBody;
 
 import static utils.FinalVariables.*;
 
@@ -129,15 +130,14 @@ public class EventsController extends BaseController{
      * user's checking in
      */
     @RequestMapping(value = "/willgo",method = RequestMethod.POST,headers = {"Accept=application/json"})
-    public @ResponseBody EventsWrapper willGo(String token,Long event_id){
+    public @ResponseBody EventsWrapper willGo(@RequestBody WillGoRequestBody rb){
 
-
-        System.out.println("willgo token: "+token);
-        System.out.println("willgo event_id: "+event_id);
-        Events eve=eventsService.getEventById(event_id);
+        System.out.println("willgo token: "+rb.getToken());
+        System.out.println("willgo event_id: "+rb.getEvent_id());
+        Events eve=eventsService.getEventById(rb.getEvent_id());
         Users u= (Users) request.getSession().getAttribute(USER_IN_SESSION);
 
-        if(u.getToken().equals(token)){
+        if(u.getToken().equals(rb.getToken())){
             System.out.println("tokens is equal in willGo method");
         }else{
             System.out.println("tokens is NOT equal in willGo method");
