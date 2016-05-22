@@ -32,6 +32,8 @@ public class EventsService {
         return er.getEventsByAuthor(user);
     }
 
-
+    public List<Events> getAllEvents(){
+        return er.getAllEvents(System.currentTimeMillis()-(15L*60L*1000L));
+    }
 
 }

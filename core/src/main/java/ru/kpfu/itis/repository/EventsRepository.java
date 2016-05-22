@@ -16,4 +16,6 @@ public interface EventsRepository {
     List<Events> getEventsByHomeNum(Integer homeNum,Long time);
 
     List<Events> getEventsByAuthor(Users user);
+
+    List<Events> getAllEvents(Long time);
 }

@@ -29,6 +29,12 @@ public class EventsController extends BaseController{
     @Autowired
     private UsersService usersService;
 
+    @RequestMapping(value = "/all",method = RequestMethod.GET,headers = {"Accept=application/json"})
+    public @ResponseBody DUEventsView getAllEvents() {
+        return new DUEventsView(eventsService.getAllEvents());
+    }
+
+
     @RequestMapping(method = RequestMethod.POST,headers = {"Accept=application/json"})
     public @ResponseBody String setNewEvent(@RequestBody EventsWrapper event){
 
