@@ -1,5 +1,6 @@
 package ru.kpfu.itis.repository.impl;
 
+import org.hibernate.NonUniqueResultException;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,15 @@ public class UsersRepositoryImpl  implements UsersRepository {
         sessionFactory.getCurrentSession().save(user);
     }
 
-    public Users getUserByLogin(String login) {
-        return (Users)sessionFactory.getCurrentSession().createCriteria(Users.class)
-                .add(Restrictions.eq("email", login)).uniqueResult();
+    public Users getUserByLogin(String login)  {
+        Users user=null;
+        try {
+            user = (Users) sessionFactory.getCurrentSession().createCriteria(Users.class)
+                    .add(Restrictions.eq("email", login)).uniqueResult();
+        }catch (NonUniqueResultException nonUniq){
+            System.err.println("Таких пользователей несколько!!!!!");
+        }
+        return user;
     }
 
     public void updateUser(Users user) {

@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.domain.Events;
+import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.service.EventsService;
 import ru.kpfu.itis.utils.*;
 import ru.kpfu.itis.wrappers.EventsWrapper;
 import views.DUEventsView;
+import static utils.FinalVariables.*;
 
 import java.util.List;
 
@@ -16,7 +18,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/events")
-public class EventsController {
+public class EventsController extends BaseController{
 
 
     @Autowired
@@ -43,7 +45,8 @@ public class EventsController {
     public @ResponseBody
     DUEventsView getEvents(@PathVariable Integer homeNum){
 
-            List<Events> events = eventsService.getEventsByHomeNum(3);
+            Users user= (Users) request.getSession().getAttribute(USER_IN_SESSION);
+            List<Events> events = eventsService.getEventsByHomeNum(3,user);
 
 
 
@@ -62,8 +65,27 @@ public class EventsController {
         return new DUEventsView(events);
     }
 
+    /**
+     * /events/my
+     Тут ты мне отправляешь все мероприятия, которые создал юзер
 
+     /events/du(homeNum)
+     Этот запрос уже есть, но надо в бд удалить тестовые события и занести мероприятия для каждого дома, список домов я скину
+     /events/users(eventID)
+     Здесь ты мне должен прислать списки юзеров для этого события
+     /events/history/
+     Здесь надо будет прислать мне мероприятия, в который пользователь нажал "я приду"
+     /events/du/history/
+     Тоже самое, только для ду
+     /events/confirm/
+     Здесь ты мне отправляешь рандомный стринг_userID
+     /events/confirm/admin/
+     Здесь я отправляю тебе один из рандомных стрингов_ userID, ты на этом пользователе должен поставить статус тип был
+     */
 
+//    @RequestMapping(value = "/my",method = RequestMethod.GET,headers = {"Accept=application/json"})
+//    public @ResponseBody
+//    DUEventsView getEvents(@PathVariable Integer homeNum)
 
 
 

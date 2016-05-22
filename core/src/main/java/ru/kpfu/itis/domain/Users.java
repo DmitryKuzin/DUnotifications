@@ -31,6 +31,11 @@ public class Users {
 
     private int rating;
 
+    @OneToMany(cascade = CascadeType.REFRESH,
+            fetch = FetchType.LAZY,
+            mappedBy = "author")
+    private List<Events> usersEvents;
+
 
     public String getAvatar() {
         return avatar;
@@ -110,5 +115,13 @@ public class Users {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public List<Events> getUsersEvents() {
+        return usersEvents;
+    }
+
+    public void setUsersEvents(List<Events> usersEvents) {
+        this.usersEvents = usersEvents;
     }
 }

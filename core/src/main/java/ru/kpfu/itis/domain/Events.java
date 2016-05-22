@@ -1,9 +1,6 @@
 package ru.kpfu.itis.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -22,11 +19,15 @@ public class Events {
 
     private String description;
 
-//    private Double coordinates_x;
-//
-//    private Double coordinates_y;
-//
-//    private Integer currentParticipantsCount;
+    @ManyToOne(cascade = {CascadeType.REFRESH},
+            fetch = FetchType.LAZY)
+    private Users author;
+
+    private Double coordinates_x;
+
+    private Double coordinates_y;
+
+    private Integer currentParticipantsCount;
 
     private Integer maxParticipansCount;
     //time in seconds from 1970
@@ -34,15 +35,16 @@ public class Events {
 
     public Events(){}
 
-    public Events(Double coordinates_x, Double coordinates_y, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name) {
-//        this.coordinates_x = coordinates_x;
-//        this.coordinates_y = coordinates_y;
-//        this.currentParticipantsCount = currentParticipantsCount;
+    public Events(Double coordinates_x, Double coordinates_y, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name,Users author) {
+        this.coordinates_x = coordinates_x;
+        this.coordinates_y = coordinates_y;
+        this.currentParticipantsCount = currentParticipantsCount;
         this.description = description;
         this.dt = dt;
         this.homeNum = homeNum;
         this.maxParticipansCount = maxParticipansCount;
         this.name = name;
+        this.author=author;
     }
 
     public Integer getHomeNum() {
@@ -123,5 +125,37 @@ public class Events {
 
     public void setDt(Long dt) {
         this.dt = dt;
+    }
+
+    public Users getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Users author) {
+        this.author = author;
+    }
+
+    public Double getCoordinates_x() {
+        return coordinates_x;
+    }
+
+    public void setCoordinates_x(Double coordinates_x) {
+        this.coordinates_x = coordinates_x;
+    }
+
+    public Double getCoordinates_y() {
+        return coordinates_y;
+    }
+
+    public void setCoordinates_y(Double coordinates_y) {
+        this.coordinates_y = coordinates_y;
+    }
+
+    public Integer getCurrentParticipantsCount() {
+        return currentParticipantsCount;
+    }
+
+    public void setCurrentParticipantsCount(Integer currentParticipantsCount) {
+        this.currentParticipantsCount = currentParticipantsCount;
     }
 }

@@ -1,6 +1,7 @@
 package ru.kpfu.itis.wrappers;
 
 import ru.kpfu.itis.domain.Events;
+import ru.kpfu.itis.domain.Users;
 
 /**
  * Created by kuzin on 07.05.2016.
@@ -23,10 +24,11 @@ public class EventsWrapper {
 
     private Integer currentParticipantsCount;
 
-    //TODO исправить когда появиться авторизация
+    private Users author;
+    
     public Events toEvents(){
         return new Events(coordinates_x,coordinates_y,currentParticipantsCount,description,dt,3
-        ,maxParticipansCount,name);
+        ,maxParticipansCount,name,author);
     }
 
     public Double getCoordinates_x() {
@@ -91,5 +93,13 @@ public class EventsWrapper {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Users getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Users author) {
+        this.author = author;
     }
 }

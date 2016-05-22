@@ -1,6 +1,7 @@
 package ru.kpfu.itis.repository;
 
 import ru.kpfu.itis.domain.Events;
+import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.wrappers.EventsWrapper;
 
 import java.util.List;
@@ -12,5 +13,5 @@ public interface EventsRepository {
 
     void addNewEvent(Events event);
 
-    List<Events> getEventsByHomeNum(Integer homeNum);
+    List<Events> getEventsByHomeNum(Integer homeNum,Users user);
 }
