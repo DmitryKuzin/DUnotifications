@@ -32,14 +32,19 @@ public class AuthController {
         System.out.println(credentials.getEmail());
         System.out.println(credentials.getHash_pass());
 
-        credentials.setHash_pass(encode(credentials.getHash_pass()));
+        String hash_pass=encode(credentials.getHash_pass());
+        credentials.setHash_pass(hash_pass);
         Users user=usersService.checkCredentials(credentials);
+        System.out.println("1");
         if(user==null){
             return null;
         }
+        System.out.println("2");
         String access_token=make(user.getRole());
+        System.out.println("3");
         user.setToken(access_token);
         usersService.updateUser(user);
+        System.out.println("4");
         System.out.println(access_token);
         return new UsersWrapper(user);
     }
