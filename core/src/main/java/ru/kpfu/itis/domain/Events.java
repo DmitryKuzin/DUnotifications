@@ -41,6 +41,18 @@ public class Events {
 
     public Events(){}
 
+    public Events(Double coordinates_x, Double coordinates_y, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name) {
+        this.coordinates_x = coordinates_x;
+        this.coordinates_y = coordinates_y;
+        this.currentParticipantsCount = currentParticipantsCount;
+        this.description = description;
+        this.dt = dt;
+        this.homeNum = homeNum;
+        this.maxParticipansCount = maxParticipansCount;
+        this.name = name;
+
+    }
+
     public Events(Double coordinates_x, Double coordinates_y, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name,Users author) {
         this.coordinates_x = coordinates_x;
         this.coordinates_y = coordinates_y;

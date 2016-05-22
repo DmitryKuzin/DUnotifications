@@ -38,7 +38,12 @@ public class EventsController extends BaseController{
     @RequestMapping(method = RequestMethod.POST,headers = {"Accept=application/json"})
     public @ResponseBody String setNewEvent(@RequestBody EventsWrapper event){
 
-        eventsService.addNewEvent(event.toEvents());
+        Events e=event.toEvents();
+        Users author=(Users) request.getSession().getAttribute(USER_IN_SESSION);
+        if(author!=null) {
+            e.setAuthor(author);
+        }
+        eventsService.addNewEvent(e);
 
         System.out.println(event.getName());
         System.out.println(event.getDescription());

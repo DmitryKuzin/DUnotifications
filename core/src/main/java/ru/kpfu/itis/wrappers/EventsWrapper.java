@@ -3,10 +3,12 @@ package ru.kpfu.itis.wrappers;
 import ru.kpfu.itis.domain.Events;
 import ru.kpfu.itis.domain.Users;
 
+import java.io.Serializable;
+
 /**
  * Created by kuzin on 07.05.2016.
  */
-public class EventsWrapper {
+public class EventsWrapper implements Serializable {
 
     private Double coordinates_x;
 
@@ -24,11 +26,10 @@ public class EventsWrapper {
 
     private Integer currentParticipantsCount;
 
-    private Users author;
     
     public Events toEvents(){
         return new Events(coordinates_x,coordinates_y,currentParticipantsCount,description,dt,3
-        ,maxParticipansCount,name,author);
+        ,maxParticipansCount,name);
     }
 
     public Double getCoordinates_x() {
@@ -95,11 +96,4 @@ public class EventsWrapper {
         this.name = name;
     }
 
-    public Users getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Users author) {
-        this.author = author;
-    }
 }

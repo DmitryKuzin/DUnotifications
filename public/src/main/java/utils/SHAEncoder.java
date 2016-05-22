@@ -23,4 +23,8 @@ public class SHAEncoder {
         }
         return digest.length>1? String.format("%064x", new java.math.BigInteger(1, digest)): null;
     }
+
+    public static void main(String[] args) {
+        System.out.println(encode("myevents9209kbprf"));
+    }
 }
