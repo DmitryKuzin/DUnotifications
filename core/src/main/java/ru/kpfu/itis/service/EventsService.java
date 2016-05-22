@@ -39,6 +39,7 @@ public class EventsService {
     }
 
     public Events getEventById(Long event_ID){
+        System.out.println("eventsService event_ID:"+event_ID);
         return er.getEventById(event_ID);
     }
 

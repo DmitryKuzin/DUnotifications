@@ -73,34 +73,6 @@ public class Events {
         this.homeNum = homeNum;
     }
 
-//    public int getCurrentParticipantsCount() {
-//        return currentParticipantsCount;
-//    }
-//
-//    public void setCurrentParticipantsCount(int currentParticipantsCount) {
-//        this.currentParticipantsCount = currentParticipantsCount;
-//    }
-//
-//    public Double getCoordinates_x() {
-//        return coordinates_x;
-//    }
-//
-//    public void setCoordinates_x(Double coordinates_x) {
-//        this.coordinates_x = coordinates_x;
-//    }
-//
-//    public Double getCoordinates_y() {
-//        return coordinates_y;
-//    }
-//
-//    public void setCoordinates_y(Double coordinates_y) {
-//        this.coordinates_y = coordinates_y;
-//    }
-//
-//    public void setCurrentParticipantsCount(Integer currentParticipantsCount) {
-//        this.currentParticipantsCount = currentParticipantsCount;
-//    }
-
     public void setMaxParticipansCount(Integer maxParticipansCount) {
         this.maxParticipansCount = maxParticipansCount;
     }
@@ -184,4 +156,6 @@ public class Events {
     public void setCheckedInUsers(List<Events_Users> checkedInUsers) {
         this.checkedInUsers = checkedInUsers;
     }
+
+
 }

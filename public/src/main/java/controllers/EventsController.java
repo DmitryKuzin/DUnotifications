@@ -132,8 +132,8 @@ public class EventsController extends BaseController{
     public @ResponseBody EventsWrapper willGo(String token,Long event_id){
 
 
-        System.out.println("token: "+token);
-        System.out.println("event_id: "+event_id);
+        System.out.println("willgo token: "+token);
+        System.out.println("willgo event_id: "+event_id);
         Events eve=eventsService.getEventById(event_id);
         Users u= (Users) request.getSession().getAttribute(USER_IN_SESSION);
 
