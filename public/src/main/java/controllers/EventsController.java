@@ -142,7 +142,7 @@ public class EventsController extends BaseController{
         eve.setCurrentParticipantsCount(++count);
         Users u= (Users) request.getSession().getAttribute(USER_IN_SESSION);
 
-        if(u.getToken()!=null){
+        if(u!=null){
             System.out.println("session user token is :"+ u.getToken());
             System.out.println("request user token is :"+rb.getToken());
             if(u.getEmail()!=null){
@@ -151,7 +151,7 @@ public class EventsController extends BaseController{
                 System.out.println("user is totally null");
             }
         }else{
-            System.out.println("session user token is : null");
+            System.out.println("session user is : null");
             System.out.println("request user token is :"+rb.getToken());
         }
 
