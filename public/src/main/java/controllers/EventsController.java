@@ -165,15 +165,17 @@ public class EventsController extends BaseController{
         Users u= usersService.getUserByToken(rb.getToken());
 
         //не дает добавить пользователя в мероприятие второй раз
-        for(Events_Users eu: eve.getCheckedInUsers()){
-            System.out.println(eu.getUser_id());
-            System.out.println(u.getId());
-            if(eu.getUser_id().getId().equals(u.getId())){
 
+        System.out.println("checkedInUsers size:" +eve.getCheckedInUsers().size());
+        for(Events_Users eu: eve.getCheckedInUsers()){
+
+            if(eu.getUser_id().getId().equals(u.getId())){
+                System.out.println("id равны!!!!!!");
                 return new EventsWrapper(eve);
             }
         }
 
+        System.out.println("used_id:"+u.getId());
         eve.setCurrentParticipantsCount(++count);
         eventsService.updateEvent(eve);
         eventsService.checkIn(u,eve);
