@@ -47,7 +47,7 @@ public class UsersService {
         ur.updateUser(user);
     }
 
-    public List<Users> getUsersByEvent(Integer eventID){
+    public List<Users> getUsersByEvent(Long eventID){
         return ur.getUsersByEvent(eventID);
     }
 

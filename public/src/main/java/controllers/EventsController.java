@@ -167,7 +167,7 @@ public class EventsController extends BaseController{
 
         //не дает добавить пользователя в мероприятие второй раз
 
-        List<Users> users=usersService.getUsersByEvent(eve.getId().intValue());
+        List<Users> users=usersService.getUsersByEvent(eve.getId());
         for(Users user: users){
 
             if(user.getId().equals(u.getId())){

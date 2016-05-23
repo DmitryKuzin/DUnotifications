@@ -44,11 +44,12 @@ public class UsersRepositoryImpl  implements UsersRepository {
         sessionFactory.getCurrentSession().update(user);
     }
 
-    public List<Users> getUsersByEvent(Integer eventID) {
-        Events e= (Events) sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.eq("id",eventID)).uniqueResult();
+    public List<Users> getUsersByEvent(Long eventID) {
         List<Users> users=new ArrayList<Users>();
-        for(Events_Users eu:e.getCheckedInUsers()){
-            users.add(eu.getUser_id());
+        List<Events_Users> eu=sessionFactory.getCurrentSession().createCriteria(Events_Users.class).
+                add(Restrictions.eq("event_id",eventID)).list();
+        for(Events_Users evus:eu){
+            users.add(evus.getUser_id());
         }
         return users;
     }

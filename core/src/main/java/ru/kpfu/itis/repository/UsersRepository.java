@@ -16,7 +16,7 @@ public interface UsersRepository {
 
     void updateUser(Users user);
 
-    List<Users> getUsersByEvent(Integer eventID);
+    List<Users> getUsersByEvent(Long eventID);
 
     Users getUserByToken(String token);
 }
