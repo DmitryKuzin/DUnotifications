@@ -167,33 +167,14 @@ public class EventsController extends BaseController{
 
         //не дает добавить пользователя в мероприятие второй раз
 
+        List<Users> users=usersService.getUsersByEvent(eve.getId().intValue());
+        for(Users user: users){
 
-
-        System.out.print("checkedInUsers size:");
-        System.out.println(eve.getCheckedInUsers().size());
-        System.out.print("checkedInUsers size:");
-        System.out.println(eve.getCheckedInUsers().size());
-        System.out.print("checkedInUsers size:");
-        System.out.println(eve.getCheckedInUsers().size());
-        System.out.print("checkedInUsers size:");
-        System.out.println(eve.getCheckedInUsers().size());
-        System.out.print("checkedInUsers size:");
-        System.out.println(eve.getCheckedInUsers().size());
-        System.out.print("checkedInUsers size:");
-        System.out.println(eve.getCheckedInUsers().size());
-        System.out.print("checkedInUsers size:");
-        System.out.println(eve.getCheckedInUsers().size());
-
-
-        for(Events_Users eu: eve.getCheckedInUsers()){
-
-            if(eu.getUser_id().getId().equals(u.getId())){
+            if(user.getId().equals(u.getId())){
                 System.out.println("id равны!!!!!!");
                 return new EventsWrapper(eve);
             }
         }
-
-        System.out.println("used_id:"+u.getId());
         eve.setCurrentParticipantsCount(++count);
         eventsService.updateEvent(eve);
         eventsService.checkIn(u,eve);
