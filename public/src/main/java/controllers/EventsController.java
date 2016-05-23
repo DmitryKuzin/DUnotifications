@@ -90,7 +90,7 @@ public class EventsController extends BaseController{
      public @ResponseBody
      DUUsersView getUsersByEvent(@PathVariable Integer eventID){
          List<Users> users=null;
-         users=usersService.getUsersByEvent(eventID);
+         users=usersService.getUsersByEvent(eventID.longValue());
          if(users==null){
              System.err.println("ошибка в методе getUsersByEvent где eventID=" +eventID);
              return null;
