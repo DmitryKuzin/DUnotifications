@@ -1,12 +1,15 @@
 package controllers;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.itis.domain.Events;
+import ru.kpfu.itis.domain.Events_Users;
 import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.service.EventsService;
 import ru.kpfu.itis.service.UsersService;
+import ru.kpfu.itis.utils.TokenRenderer;
 import ru.kpfu.itis.wrappers.EventsWrapper;
 import views.DUEventsView;
 import views.DUUsersView;
@@ -99,19 +102,42 @@ public class EventsController extends BaseController{
      /events/history/
      Здесь надо будет прислать мне мероприятия, в который пользователь нажал "я приду"
       */
+    @RequestMapping(value = "/history",method = RequestMethod.GET,headers = {"Accept=application/json"})
+    public @ResponseBody DUEventsView getHistory(String token){
+
+        return new DUEventsView(eventsService.getHistoryByUserToken(token));
+    }
      /**
      /events/du/history/
      Тоже самое, только для ду
       */
+     @RequestMapping(value = "/du/history",method = RequestMethod.GET,headers = {"Accept=application/json"})
+     public @ResponseBody DUEventsView getDUHistory(String token){
+
+         return new DUEventsView(eventsService.getDUHistoryByUserToken(token));
+     }
      /**
      /events/confirm/
      Здесь ты мне отправляешь рандомный стринг_userID
       */
+     @RequestMapping(value = "/du/history",method = RequestMethod.GET,headers = {"Accept=application/json"})
+     public @ResponseBody String getRandomString(String token){
+
+         Users u=usersService.getUserByToken(token);
+         return TokenRenderer.make(10,u.getId());
+     }
+
      /**
      /events/confirm/admin/
      Здесь я отправляю тебе один из рандомных стрингов_ userID, ты на этом пользователе должен поставить статус тип был
      */
-
+    @RequestMapping(value = "/confirm/admin",method = RequestMethod.POST,headers = {"Accept=application/json"})
+    public @ResponseBody String checkUserIn(String randomString){
+        Long user_id=new Long(randomString.substring(randomString.indexOf("_")));
+        System.out.println(user_id);
+        //TODO доделай это
+        return "";
+    }
 
     /**
      * /events/my
@@ -137,10 +163,16 @@ public class EventsController extends BaseController{
         if(count==null){
             count=0;
         }
-        eve.setCurrentParticipantsCount(++count);
         Users u= usersService.getUserByToken(rb.getToken());
 
+        //не дает добавить пользователя в мероприятие второй раз
+        for(Events_Users eu: eve.getCheckedInUsers()){
+            if(eu.getUser_id().getId().equals(u.getId())){
+                return new EventsWrapper(null);
+            }
+        }
 
+        eve.setCurrentParticipantsCount(++count);
         eventsService.updateEvent(eve);
         eventsService.checkIn(u,eve);
 

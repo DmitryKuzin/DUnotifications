@@ -20,6 +20,8 @@ public class Events_Users {
             fetch = FetchType.LAZY)
     private Users user_id;
 
+    private boolean checked;
+
     public Events_Users() {
     }
 
@@ -45,5 +47,13 @@ public class Events_Users {
 
     public void setUser_id(Users user_id) {
         this.user_id = user_id;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 }

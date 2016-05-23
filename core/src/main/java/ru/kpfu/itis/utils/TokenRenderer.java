@@ -28,4 +28,18 @@ public class TokenRenderer {
         String date=new Date().toString();
         return s+date.hashCode()+"_"+role;
     }
+
+    public static String make(Integer lenght,Long user_id){
+        char[] arr=filling.toCharArray();
+
+        Random r=new Random();
+
+        String s="";
+
+        for (int i = 0; i < lenght; i++) {
+            s+=arr[r.nextInt(arr.length)];
+        }
+        String date=new Date().toString();
+        return s+date.hashCode()+"_"+user_id.toString();
+    }
 }

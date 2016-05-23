@@ -24,4 +24,8 @@ public interface EventsRepository {
     void checkIn(Users user,Events event);
 
     void updateEvent(Events eve);
+
+    List<Events> getHistoryByUser(Users user);
+
+    List<Events> getDUHistoryByUser(Users user);
 }

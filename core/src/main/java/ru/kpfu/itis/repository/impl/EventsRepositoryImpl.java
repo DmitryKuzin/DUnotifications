@@ -11,6 +11,7 @@ import ru.kpfu.itis.domain.Events_Users;
 import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.repository.EventsRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +30,34 @@ public class EventsRepositoryImpl implements EventsRepository {
 
     public void updateEvent(Events eve) {
         sessionFactory.getCurrentSession().update(eve);
+    }
+
+    public List<Events> getHistoryByUser(Users user) {
+        List<Events_Users> list=null;
+        List<Events> events=new ArrayList<Events>();
+        list=sessionFactory.getCurrentSession().createCriteria(Events_Users.class).add(Restrictions.eq("user_id",user)).list();
+        if(list!=null) {
+            for (Events_Users eu : list) {
+                if(eu.getEvent_id().getHomeNum()==null){
+                    events.add(eu.getEvent_id());
+                }
+            }
+        }
+        return events;
+    }
+
+    public List<Events> getDUHistoryByUser(Users user) {
+        List<Events_Users> list=null;
+        List<Events> events=new ArrayList<Events>();
+        list=sessionFactory.getCurrentSession().createCriteria(Events_Users.class).add(Restrictions.eq("user_id",user)).list();
+        if(list!=null) {
+            for (Events_Users eu : list) {
+                if(eu.getEvent_id().getHomeNum()!=null){
+                    events.add(eu.getEvent_id());
+                }
+            }
+        }
+        return events;
     }
 
     public List<Events> getEventsByHomeNum(Integer homeNum,Long time) {

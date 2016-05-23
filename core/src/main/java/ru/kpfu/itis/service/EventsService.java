@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.kpfu.itis.domain.Events;
 import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.repository.EventsRepository;
+import ru.kpfu.itis.repository.UsersRepository;
 
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,9 @@ public class EventsService {
 
     @Autowired
     private EventsRepository er;
+
+    @Autowired
+    private UsersRepository ur;
 
 
     public void addNewEvent(Events event){
@@ -49,6 +53,18 @@ public class EventsService {
 
     public void updateEvent(Events eve){
         er.updateEvent(eve);
+    }
+
+    public List<Events> getHistoryByUserToken(String token){
+        Users u=ur.getUserByToken(token);
+
+        return er.getHistoryByUser(u);
+    }
+
+    public List<Events> getDUHistoryByUserToken(String token){
+        Users u=ur.getUserByToken(token);
+
+        return er.getDUHistoryByUser(u);
     }
 
 }
