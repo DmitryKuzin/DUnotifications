@@ -162,11 +162,17 @@ public class EventsController extends BaseController{
         if(count==null){
             count=0;
         }
+        System.out.println("from willgo");
         Users u= usersService.getUserByToken(rb.getToken());
 
         //не дает добавить пользователя в мероприятие второй раз
 
         System.out.println(".");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println(".");
         System.out.println("checkedInUsers size:" +eve.getCheckedInUsers().size());
         System.out.println(".");
