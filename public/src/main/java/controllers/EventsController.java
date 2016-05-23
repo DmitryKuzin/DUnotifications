@@ -119,7 +119,7 @@ public class EventsController extends BaseController{
      /events/confirm/
      Здесь ты мне отправляешь рандомный стринг_userID
       */
-     @RequestMapping(value = "/du/history",method = RequestMethod.GET,headers = {"Accept=application/json"})
+     @RequestMapping(value = "/confirm",method = RequestMethod.GET,headers = {"Accept=application/json"})
      public @ResponseBody String getRandomString(String token){
 
          Users u=usersService.getUserByToken(token);
