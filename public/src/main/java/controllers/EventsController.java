@@ -170,7 +170,7 @@ public class EventsController extends BaseController{
             System.out.println(u.getId());
             if(eu.getUser_id().getId().equals(u.getId())){
 
-                return new EventsWrapper(null);
+                return new EventsWrapper(eve);
             }
         }
 
