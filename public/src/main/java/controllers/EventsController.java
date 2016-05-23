@@ -167,7 +167,10 @@ public class EventsController extends BaseController{
 
         //не дает добавить пользователя в мероприятие второй раз
         for(Events_Users eu: eve.getCheckedInUsers()){
+            System.out.println(eu.getUser_id());
+            System.out.println(u.getId());
             if(eu.getUser_id().getId().equals(u.getId())){
+
                 return new EventsWrapper(null);
             }
         }
