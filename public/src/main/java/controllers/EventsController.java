@@ -83,9 +83,9 @@ public class EventsController extends BaseController{
      /events/users(eventID)
      Здесь ты мне должен прислать списки юзеров для этого события
       */
-     @RequestMapping(value = "/users{eventID}",method = RequestMethod.GET,headers = {"Accept=application/json"})
+     @RequestMapping(value = "/users",method = RequestMethod.GET,headers = {"Accept=application/json"})
      public @ResponseBody
-     DUUsersView getUsersByEvent(@PathVariable Integer eventID){
+     DUUsersView getUsersByEvent(Integer eventID){
          List<Users> users=null;
          users=usersService.getUsersByEvent(eventID.longValue());
          if(users==null){
