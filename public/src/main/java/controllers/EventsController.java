@@ -36,6 +36,7 @@ public class EventsController extends BaseController{
     @RequestMapping(value = "/all",method = RequestMethod.GET,headers = {"Accept=application/json"})
     public @ResponseBody DUEventsView getAllEvents() {
         List<Events> events=eventsService.getAllEvents();
+
         return new DUEventsView(events);
     }
 
