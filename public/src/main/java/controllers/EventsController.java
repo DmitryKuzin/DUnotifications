@@ -69,14 +69,7 @@ public class EventsController extends BaseController{
     @RequestMapping(value = "/du{homeNum}",method = RequestMethod.GET,headers = {"Accept=application/json"})
     public @ResponseBody
     DUEventsView getEvents(@PathVariable Integer homeNum){
-
-            Users user= (Users) request.getSession().getAttribute(USER_IN_SESSION);
-            List<Events> events=null;
-            if(user!=null) {
-                events = eventsService.getEventsByHomeNum(3);
-            }
-        return new DUEventsView(new ArrayList<Events>());
-//        return new DUEventsView(events);
+        return new DUEventsView(eventsService.getEventsByHomeNum(homeNum));
     }
 
 
