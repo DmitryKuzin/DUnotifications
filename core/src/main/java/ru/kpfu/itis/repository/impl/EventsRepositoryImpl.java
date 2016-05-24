@@ -70,7 +70,14 @@ public class EventsRepositoryImpl implements EventsRepository {
     }
 
     public List<Events> getAllEvents(Long time){
-        return sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.gt("dt",time)).add(Restrictions.eq("homeNum","")).list();
+        List<Events> events=sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.gt("dt",time)).list();
+        List<Events> result=new ArrayList<Events>();
+        for(Events e:events){
+            if(e.getHomeNum()==null){
+                result.add(e);
+            }
+        }
+        return result;
     }
 
     public Events getEventById(Long event_ID) {
