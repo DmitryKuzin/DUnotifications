@@ -67,9 +67,12 @@ public class EventsController extends BaseController{
      /events/du(homeNum)
      Этот запрос уже есть, но надо в бд удалить тестовые события и занести мероприятия для каждого дома, список домов я скину
      */
-    @RequestMapping(value = "/du{homeNum}",method = RequestMethod.GET,headers = {"Accept=application/json"})
+//    @RequestMapping(value = "/du/{homeNum}",method = RequestMethod.GET,headers = {"Accept=application/json"})
+//    public @ResponseBody
+//    DUEventsView getEvents(@PathVariable Integer homeNum){
+    @RequestMapping(value = "/du",method = RequestMethod.GET,headers = {"Accept=application/json"})
     public @ResponseBody
-    DUEventsView getEvents(@PathVariable Integer homeNum){
+    DUEventsView getEvents(Integer homeNum){
         System.out.print("home num:");
         System.out.println(homeNum);
         return new DUEventsView(eventsService.getEventsByHomeNum(homeNum));
