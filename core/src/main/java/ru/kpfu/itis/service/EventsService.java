@@ -29,7 +29,8 @@ public class EventsService {
 
     public List<Events> getEventsByHomeNum(Integer homeNum){
         //TODO хардкод
-        return er.getEventsByHomeNum(homeNum,System.currentTimeMillis()-(15L*60L*1000L));
+        Long time=(System.currentTimeMillis()-(15L*60L*1000L))/1000L;
+        return er.getEventsByHomeNum(homeNum,time);
     }
 
     public List<Events> getEventsByAuthor(Users user){
