@@ -96,7 +96,7 @@ public class EventsController extends BaseController{
          System.out.println("users count: "+users.size());
          if(users==null){
              System.out.println("ошибка в методе getUsersByEvent где eventID=" +eventID);
-             return new DUUsersView(new ArrayList<Users>());
+             return new DUUsersView(null);
          }
 
         return new DUUsersView(users);
