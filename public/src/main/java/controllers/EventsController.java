@@ -170,6 +170,9 @@ public class EventsController extends BaseController{
         Users user= (Users) request.getSession().getAttribute(USER_IN_SESSION);
         System.out.println(token);
         List<Events> events = eventsService.getEventsByAuthor(user);
+        System.out.println(events.size());
+        System.out.println(events.size());
+        System.out.println(events.size());
         return new DUEventsView(events);
     }
 
