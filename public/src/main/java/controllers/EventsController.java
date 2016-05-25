@@ -43,12 +43,17 @@ public class EventsController extends BaseController{
     public @ResponseBody String setNewEvent(@RequestBody EventsWrapper event){
 
         Events e=event.toEvents();
-        Users author=usersService.getUserById(event.getAuthor());
-        if(author!=null) {
-            System.out.println(author.getEmail());
-            e.setAuthor(author);
-        }
-        eventsService.addNewEvent(e);
+        System.out.println(event.getAuthor());
+        System.out.println(event.getAuthor());
+        System.out.println(event.getAuthor());
+        System.out.println(event.getAuthor());
+        System.out.println(event.getAuthor());
+//        Users author=usersService.getUserById(event.getAuthor());
+//        if(author!=null) {
+//            System.out.println(author.getEmail());
+//            e.setAuthor(author);
+//        }
+//        eventsService.addNewEvent(e);
 
         System.out.println(event.getName());
         System.out.println(event.getDescription());
