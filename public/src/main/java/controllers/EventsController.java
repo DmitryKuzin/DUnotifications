@@ -214,7 +214,7 @@ public class EventsController extends BaseController{
         }
 
 
-            if (eve.getCurrentParticipantsCount() == eve.getMaxParticipansCount()) {
+            if (count == eve.getMaxParticipansCount()) {
                 return new EventsWrapper(eve);
             }
 
