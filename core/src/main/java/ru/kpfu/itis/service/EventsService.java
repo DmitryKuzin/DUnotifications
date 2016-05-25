@@ -27,11 +27,11 @@ public class EventsService {
         er.addNewEvent(event);
     }
 
-    public List<Events> getEventsByHomeNum(Integer homeNum){
-        //TODO хардкод
-        Long time=(System.currentTimeMillis()-(15L*60L*1000L))/1000L;
-        return er.getEventsByHomeNum(homeNum,time);
-    }
+//    public List<Events> getEventsByHomeNum(Integer homeNum){
+//        //TODO хардкод
+//        Long time=(System.currentTimeMillis()-(15L*60L*1000L))/1000L;
+//        return er.getEventsByHomeNum(homeNum,time);
+//    }
 
     public List<Events> getEventsByHomeNum(String homeNum){
         //TODO хардкод

@@ -13,7 +13,7 @@ public interface EventsRepository {
 
     void addNewEvent(Events event);
 
-    List<Events> getEventsByHomeNum(Integer homeNum,Long time);
+//    List<Events> getEventsByHomeNum(Integer homeNum,Long time);
     List<Events> getEventsByHomeNum(String homeNum,Long time);
 
     List<Events> getEventsByAuthor(Users user);
