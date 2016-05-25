@@ -177,31 +177,34 @@ public class EventsController extends BaseController{
     public @ResponseBody EventsWrapper willGo(@RequestBody WillGoRequestBody rb){
 
         Events eve=eventsService.getEventById(rb.getEvent_id());
-        try {
-            System.out.println("from bd");
-            System.out.println("event maxPeopleCount ->" + eve.getMaxParticipansCount());
-            System.out.println("event maxPeopleCount ->" + eve.getMaxParticipansCount());
-            System.out.println("event curPeopleCount ->" + eve.getCurrentParticipantsCount());
-            System.out.println("event curPeopleCount ->" + eve.getCurrentParticipantsCount());
-        }catch (NullPointerException nullP){
-            System.out.println("Null Pointer BITCH!!!!");
-            System.out.println("Null Pointer BITCH!!!!");
-            System.out.println("Null Pointer BITCH!!!!");
-            System.out.println("Null Pointer BITCH!!!!");
-            System.out.println("Null Pointer BITCH!!!!");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         Integer count=eve.getCurrentParticipantsCount();
         if(count==null){
             count=0;
         }
+        System.out.println("count ->"+count);
         System.out.println("from willgo");
         Users u= usersService.getUserByToken(rb.getToken());
 
+        try {
+            System.out.println("from bd");
+            System.out.println("user id ->" + u.getId());
+            System.out.println("user id ->" + u.getId());
+            System.out.println("user email ->" + u.getEmail());
+            System.out.println("user email ->" + u.getEmail());
+
+        }catch (NullPointerException nullP){
+            System.out.println("THIS IIISSS Null Pointer BITCH!!!!");
+            System.out.println("THIS IIISSS Null Pointer BITCH!!!!");
+            System.out.println("THIS IIISSS Null Pointer BITCH!!!!");
+            System.out.println("THIS IIISSS Null Pointer BITCH!!!!");
+            System.out.println("THIS IIISSS Null Pointer BITCH!!!!");
+            System.out.println("THIS IIISSS Null Pointer BITCH!!!!");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         //не дает добавить пользователя в мероприятие второй раз
 
-        List<Users> users=usersService.getUsersByEvent(rb.getEvent_id());
+        List<Users> users=usersService.getUsersByEvent(eve.getId());
         for(Users user: users){
 
             if(user.getId().equals(u.getId())){
