@@ -6,7 +6,7 @@ package views;
 public class WillGoRequestBody {
 
     private String token;
-    private long event_id;
+    private Long event_id;
 
     public WillGoRequestBody() {}
 
