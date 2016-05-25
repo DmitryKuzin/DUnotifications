@@ -33,8 +33,8 @@ public class EventsService {
         return er.getEventsByHomeNum(homeNum,time);
     }
 
-    public List<Events> getEventsByAuthor(Users user){
-        return er.getEventsByAuthor(user);
+    public List<Events> getEventsByAuthor(String token){
+        return er.getEventsByAuthor(ur.getUserByToken(token));
     }
 
     public List<Events> getAllEvents(){

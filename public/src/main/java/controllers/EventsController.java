@@ -167,9 +167,7 @@ public class EventsController extends BaseController{
     @RequestMapping(value = "/my",method = RequestMethod.GET,headers = {"Accept=application/json"})
     public @ResponseBody
     DUEventsView getEventsByAuthor(String token){
-        Users user= (Users) request.getSession().getAttribute(USER_IN_SESSION);
-        System.out.println(token);
-        List<Events> events = eventsService.getEventsByAuthor(user);
+        List<Events> events = eventsService.getEventsByAuthor(token);
         System.out.println(events.size());
         System.out.println(events.size());
         System.out.println(events.size());
