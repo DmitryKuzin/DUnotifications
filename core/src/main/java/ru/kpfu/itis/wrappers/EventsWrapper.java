@@ -26,6 +26,8 @@ public class EventsWrapper implements Serializable {
 
     private Integer homeNum;
 
+    private Long author;
+
     public EventsWrapper(){}
 
     public EventsWrapper(Events e) {
@@ -37,6 +39,7 @@ public class EventsWrapper implements Serializable {
         this.maxParticipansCount = e.getMaxParticipansCount();
         this.name = e.getName();
         this.homeNum=e.getHomeNum();
+        this.author=e.getAuthor().getId();
     }
 
     public Events toEvents(){
@@ -100,4 +103,19 @@ public class EventsWrapper implements Serializable {
         this.name = name;
     }
 
+    public Long getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Long author) {
+        this.author = author;
+    }
+
+    public Integer getHomeNum() {
+        return homeNum;
+    }
+
+    public void setHomeNum(Integer homeNum) {
+        this.homeNum = homeNum;
+    }
 }

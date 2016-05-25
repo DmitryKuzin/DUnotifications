@@ -10,10 +10,7 @@ import ru.kpfu.itis.service.EventsService;
 import ru.kpfu.itis.service.UsersService;
 import ru.kpfu.itis.utils.TokenRenderer;
 import ru.kpfu.itis.wrappers.EventsWrapper;
-import views.ConfimrCheckingRequestBody;
-import views.DUEventsView;
-import views.DUUsersView;
-import views.WillGoRequestBody;
+import views.*;
 
 import static utils.FinalVariables.*;
 
@@ -46,7 +43,7 @@ public class EventsController extends BaseController{
     public @ResponseBody String setNewEvent(@RequestBody EventsWrapper event){
 
         Events e=event.toEvents();
-        Users author=(Users) request.getSession().getAttribute(USER_IN_SESSION);
+        Users author=usersService.getUserById(event.getAuthor());
         if(author!=null) {
             System.out.println(author.getEmail());
             e.setAuthor(author);
@@ -124,10 +121,10 @@ public class EventsController extends BaseController{
      Здесь ты мне отправляешь рандомный стринг_userID
       */
      @RequestMapping(value = "/confirm",method = RequestMethod.GET,headers = {"Accept=application/json"})
-     public @ResponseBody String getRandomString(String token){
+     public @ResponseBody RandomTokenResponseBody getRandomString(String token){
 
          Users u=usersService.getUserByToken(token);
-         return TokenRenderer.make(10,u.getId());
+         return new RandomTokenResponseBody(TokenRenderer.make(10,u.getId()));
      }
 
      /**

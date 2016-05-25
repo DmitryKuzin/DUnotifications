@@ -34,7 +34,14 @@ public class EventsService {
     }
 
     public List<Events> getEventsByAuthor(String token){
-        return er.getEventsByAuthor(ur.getUserByToken(token));
+        Users u=ur.getUserByToken(token);
+        System.out.println(u.getId());
+        System.out.println(u.getId());
+        System.out.println(u.getId());
+        System.out.println(u.getFio());
+        System.out.println(u.getEmail());
+
+        return er.getEventsByAuthor(u);
     }
 
     public List<Events> getAllEvents(){
