@@ -83,15 +83,21 @@ public class EventsController extends BaseController{
      /events/users(eventID)
      Здесь ты мне должен прислать списки юзеров для этого события
       */
+//     @RequestMapping(value = "/users{eventID}",method = RequestMethod.GET,headers = {"Accept=application/json"})
+//     public @ResponseBody
+//     DUUsersView getUsersByEvent(@PathVariable Integer eventID){
      @RequestMapping(value = "/users",method = RequestMethod.GET,headers = {"Accept=application/json"})
      public @ResponseBody
      DUUsersView getUsersByEvent(Integer eventID){
          List<Users> users=null;
          users=usersService.getUsersByEvent(eventID.longValue());
+
+         System.out.println("users count: "+users.size());
          if(users==null){
-             System.err.println("ошибка в методе getUsersByEvent где eventID=" +eventID);
+             System.out.println("ошибка в методе getUsersByEvent где eventID=" +eventID);
              return null;
          }
+
         return new DUUsersView(users);
      }
      /**
@@ -128,11 +134,28 @@ public class EventsController extends BaseController{
      Здесь я отправляю тебе один из рандомных стрингов_ userID, ты на этом пользователе должен поставить статус тип был
      */
     @RequestMapping(value = "/confirm/admin",method = RequestMethod.POST,headers = {"Accept=application/json"})
-    public @ResponseBody String checkUserIn(String randomString){
+    public @ResponseBody String checkUserIn(String randomString,Long event_ID){
+
         Long user_id=new Long(randomString.substring(randomString.indexOf("_")));
-        System.out.println(user_id);
-        //TODO доделай это
-        return "";
+        Users u=usersService.getUserById(user_id);
+        Events e=eventsService.getEventById(event_ID);
+
+        eventsService.checkIn(u,e);
+        System.out.println("from checkUserIn");
+        System.out.println("random string "+randomString);
+        System.out.println("eventId "+event_ID);
+        System.out.println("from bd");
+        System.out.println("user info:");
+        System.out.println(u.getEmail());
+        System.out.println(u.getId());
+        System.out.println(u.getFio());
+        System.out.println("event info:");
+        System.out.println(e.getDt());
+        System.out.println(e.getMaxParticipansCount());
+        System.out.println(e.getName());
+        System.out.println(e.getHomeNum());
+
+        return "ok";
     }
 
     /**
@@ -171,6 +194,10 @@ public class EventsController extends BaseController{
                 System.out.println("id равны!!!!!!");
                 return new EventsWrapper(eve);
             }
+        }
+
+        if(eve.getCurrentParticipantsCount()==eve.getMaxParticipansCount()){
+            return new EventsWrapper(eve);
         }
         eve.setCurrentParticipantsCount(++count);
         eventsService.updateEvent(eve);

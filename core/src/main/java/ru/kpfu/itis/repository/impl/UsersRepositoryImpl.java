@@ -55,6 +55,10 @@ public class UsersRepositoryImpl  implements UsersRepository {
         return users;
     }
 
+    public Users getUserById(Long id){
+        return (Users) sessionFactory.getCurrentSession().load(Users.class, id);
+    }
+
     public Users getUserByToken(String token) {
         return (Users) sessionFactory.getCurrentSession().createCriteria(Users.class).add(Restrictions.eq("token",token)).uniqueResult();
     }

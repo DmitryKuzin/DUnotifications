@@ -19,4 +19,7 @@ public interface UsersRepository {
     List<Users> getUsersByEvent(Long eventID);
 
     Users getUserByToken(String token);
+
+    Users getUserById(Long id);
+
 }

@@ -53,4 +53,6 @@ public class UsersService {
 
     public Users getUserByToken(String token){return ur.getUserByToken(token);}
 
+    public Users getUserById(Long id){ return ur.getUserById(id);}
+
 }

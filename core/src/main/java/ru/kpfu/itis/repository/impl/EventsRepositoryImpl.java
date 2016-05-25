@@ -87,6 +87,7 @@ public class EventsRepositoryImpl implements EventsRepository {
         Events_Users eu=new Events_Users();
         eu.setEvent_id(event);
         eu.setUser_id(user);
+        eu.setChecked(true);
         sessionFactory.getCurrentSession().save(eu);
     }
 }
