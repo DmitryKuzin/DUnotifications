@@ -16,7 +16,7 @@ public class Events {
 
     private String name;
 
-    private Integer homeNum;
+    private String homeNum;
 
     private String description;
 
@@ -39,7 +39,7 @@ public class Events {
 
     public Events(){}
 
-    public Events(String place, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name) {
+    public Events(String place, Integer currentParticipantsCount, String description, Long dt, String homeNum, Integer maxParticipansCount, String name) {
         this.place=place;
         this.currentParticipantsCount = currentParticipantsCount;
         this.description = description;
@@ -50,7 +50,7 @@ public class Events {
 
     }
 
-    public Events(String place, Integer currentParticipantsCount, String description, Long dt, Integer homeNum, Integer maxParticipansCount, String name,Users author) {
+    public Events(String place, Integer currentParticipantsCount, String description, Long dt, String homeNum, Integer maxParticipansCount, String name,Users author) {
         this.place=place;
         this.currentParticipantsCount = currentParticipantsCount;
         this.description = description;
@@ -62,11 +62,11 @@ public class Events {
     }
 
 
-    public Integer getHomeNum() {
+    public String getHomeNum() {
         return homeNum;
     }
 
-    public void setHomeNum(Integer homeNum) {
+    public void setHomeNum(String homeNum) {
         this.homeNum = homeNum;
     }
 

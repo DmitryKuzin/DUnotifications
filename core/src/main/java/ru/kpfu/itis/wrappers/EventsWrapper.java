@@ -24,7 +24,7 @@ public class EventsWrapper implements Serializable {
 
     private Integer currentParticipantsCount;
 
-    private Integer homeNum;
+    private String homeNum;
 
     private Long author;
 
@@ -110,11 +110,11 @@ public class EventsWrapper implements Serializable {
         this.author = author;
     }
 
-    public Integer getHomeNum() {
+    public String getHomeNum() {
         return homeNum;
     }
 
-    public void setHomeNum(Integer homeNum) {
+    public void setHomeNum(String homeNum) {
         this.homeNum = homeNum;
     }
 }
