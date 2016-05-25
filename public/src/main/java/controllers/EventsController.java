@@ -135,7 +135,7 @@ public class EventsController extends BaseController{
 
         System.out.println("token->"+body.getRandom_token());
         System.out.println(body.getRandom_token().indexOf("_"));
-        Long user_id=new Long(body.getRandom_token().substring(body.getRandom_token().indexOf("_")-1));
+        Long user_id=new Long(body.getRandom_token().substring(body.getRandom_token().indexOf("_")+1));
         System.out.println("user_id :"+user_id);
         Users u=usersService.getUserById(user_id);
         Events e=eventsService.getEventById(body.getEvent_id());
