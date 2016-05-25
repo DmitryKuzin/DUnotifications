@@ -177,16 +177,21 @@ public class EventsController extends BaseController{
     public @ResponseBody EventsWrapper willGo(@RequestBody WillGoRequestBody rb){
 
         Events eve=eventsService.getEventById(rb.getEvent_id());
-
-        System.out.println("from request");
-        System.out.println("event id ->"+rb.getEvent_id());
-        System.out.println("token ->"+rb.getToken());
-
-        System.out.println("from bd");
-        System.out.println("event ->"+eve);
-        System.out.println("event maxPeopleCount ->"+eve.getMaxParticipansCount());
-        System.out.println("event curPeopleCount ->"+eve.getCurrentParticipantsCount());
-
+        try {
+            System.out.println("from bd");
+            System.out.println("event maxPeopleCount ->" + eve.getMaxParticipansCount());
+            System.out.println("event maxPeopleCount ->" + eve.getMaxParticipansCount());
+            System.out.println("event curPeopleCount ->" + eve.getCurrentParticipantsCount());
+            System.out.println("event curPeopleCount ->" + eve.getCurrentParticipantsCount());
+        }catch (NullPointerException nullP){
+            System.out.println("Null Pointer BITCH!!!!");
+            System.out.println("Null Pointer BITCH!!!!");
+            System.out.println("Null Pointer BITCH!!!!");
+            System.out.println("Null Pointer BITCH!!!!");
+            System.out.println("Null Pointer BITCH!!!!");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         Integer count=eve.getCurrentParticipantsCount();
         if(count==null){
             count=0;
@@ -205,11 +210,11 @@ public class EventsController extends BaseController{
             }
         }
 
-        if(eve!=null) {
+
             if (eve.getCurrentParticipantsCount() == eve.getMaxParticipansCount()) {
                 return new EventsWrapper(eve);
             }
-        }
+
         eve.setCurrentParticipantsCount(++count);
         eventsService.updateEvent(eve);
         eventsService.checkIn(u,eve);
