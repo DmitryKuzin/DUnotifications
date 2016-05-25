@@ -61,7 +61,7 @@ public class UsersRepositoryImpl  implements UsersRepository {
         List<Events_Users> eu=sessionFactory.getCurrentSession().createCriteria(Events_Users.class).
                 add(Restrictions.eq("event_id",e)).list();
         for(Events_Users evus:eu){
-            users.add(evus.getUser_id());
+            users.add((Users) sessionFactory.getCurrentSession().load(Users.class,evus.getUser_id()));
         }
         return users;
     }

@@ -8,7 +8,7 @@ import java.util.List;
  * Created by kuzin on 28.04.2016.
  */
 @Entity
-public class Users implements Serializable{
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
