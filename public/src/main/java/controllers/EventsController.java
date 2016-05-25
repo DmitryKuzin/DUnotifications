@@ -10,6 +10,7 @@ import ru.kpfu.itis.service.EventsService;
 import ru.kpfu.itis.service.UsersService;
 import ru.kpfu.itis.utils.TokenRenderer;
 import ru.kpfu.itis.wrappers.EventsWrapper;
+import views.ConfimrCheckingRequestBody;
 import views.DUEventsView;
 import views.DUUsersView;
 import views.WillGoRequestBody;
@@ -95,7 +96,7 @@ public class EventsController extends BaseController{
          System.out.println("users count: "+users.size());
          if(users==null){
              System.out.println("ошибка в методе getUsersByEvent где eventID=" +eventID);
-             return null;
+             return new DUUsersView(new ArrayList<Users>());
          }
 
         return new DUUsersView(users);
@@ -134,16 +135,17 @@ public class EventsController extends BaseController{
      Здесь я отправляю тебе один из рандомных стрингов_ userID, ты на этом пользователе должен поставить статус тип был
      */
     @RequestMapping(value = "/confirm/admin",method = RequestMethod.POST,headers = {"Accept=application/json"})
-    public @ResponseBody String checkUserIn(String randomString,Long event_ID){
+    public @ResponseBody String checkUserIn(@RequestBody ConfimrCheckingRequestBody body){
 
-        Long user_id=new Long(randomString.substring(randomString.indexOf("_")));
+        Long user_id=new Long(body.getRandom_token().substring(body.getRandom_token().indexOf("_")));
+        System.out.println("user_id :"+user_id);
         Users u=usersService.getUserById(user_id);
-        Events e=eventsService.getEventById(event_ID);
+        Events e=eventsService.getEventById(body.getEvent_id());
 
         eventsService.checkIn(u,e);
         System.out.println("from checkUserIn");
-        System.out.println("random string "+randomString);
-        System.out.println("eventId "+event_ID);
+        System.out.println("random string "+body.getRandom_token());
+        System.out.println("eventId "+body.getEvent_id());
         System.out.println("from bd");
         System.out.println("user info:");
         System.out.println(u.getEmail());
