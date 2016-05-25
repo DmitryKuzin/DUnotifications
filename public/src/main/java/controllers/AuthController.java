@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ru.kpfu.itis.domain.Users;
 import ru.kpfu.itis.service.UsersService;
 import ru.kpfu.itis.utils.Credentials;
-import ru.kpfu.itis.utils.Roles;
 import ru.kpfu.itis.wrappers.UsersWrapper;
 import static utils.SHAEncoder.encode;
 
@@ -39,12 +38,8 @@ public class AuthController {
         if(user==null){
             return null;
         }
-        String access_token="";
-        if(credentials.getEmail().equals("marselsharipov@live.ru")){
-            access_token=make(Roles.ROLE_ADMIN.toString());
-        }else {
-            access_token = make(user.getRole());
-        }
+
+        String access_token=make(user.getRole());
         user.setToken(access_token);
         usersService.updateUser(user);
 
