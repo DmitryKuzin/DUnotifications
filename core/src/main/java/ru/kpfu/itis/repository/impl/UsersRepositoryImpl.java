@@ -46,6 +46,17 @@ public class UsersRepositoryImpl  implements UsersRepository {
 
     public List<Users> getUsersByEvent(Long eventID) {
         Events e= (Events) sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.eq("id",eventID)).uniqueResult();
+        System.out.println(e.getName());
+        System.out.println(e.getName());
+        System.out.println(e.getName());
+        System.out.println(e.getName());
+        System.out.println(e.getName());
+        System.out.println(e.getName());
+        System.out.println(e.getName());
+        System.out.println(e.getName());
+        System.out.println(e.getName());
+        System.out.println(e.getName());
+
         List<Users> users=new ArrayList<Users>();
         List<Events_Users> eu=sessionFactory.getCurrentSession().createCriteria(Events_Users.class).
                 add(Restrictions.eq("event_id",e)).list();
