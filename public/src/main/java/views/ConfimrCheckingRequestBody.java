@@ -5,7 +5,7 @@ package views;
  */
 public class ConfimrCheckingRequestBody {
 
-    public Long event_id;
+    public long event_id;
     public String random_token;
 
     public ConfimrCheckingRequestBody(){}
