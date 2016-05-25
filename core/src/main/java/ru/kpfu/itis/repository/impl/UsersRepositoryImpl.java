@@ -57,7 +57,7 @@ public class UsersRepositoryImpl  implements UsersRepository {
         List<Users> result=null;
         try {
             SQLQuery sqlQuery = sessionFactory.getCurrentSession()
-                    .createSQLQuery("select * from users where id=(select user_id_id from events_users where event_id_id="+eventID+")")
+                    .createSQLQuery("select * from users where id in(select user_id_id from events_users where event_id_id="+eventID+")")
                     .addEntity(Users.class);
             result = sqlQuery.list();
         } catch (Exception ex) {
