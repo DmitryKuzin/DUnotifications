@@ -45,15 +45,22 @@ public class EventsController extends BaseController{
         Events e=event.toEvents();
         System.out.println("author ->"+event.getAuthor());
         System.out.println("author ->"+event.getAuthor());
-        System.out.println("author ->"+event.getAuthor());
-        System.out.println("author ->"+event.getAuthor());
-        System.out.println("author ->"+event.getAuthor());
-        System.out.println("author ->"+event.getAuthor());
-        System.out.println("author ->"+event.getAuthor());
-        System.out.println("author ->"+event.getAuthor());
-        System.out.println("author ->"+event.getAuthor());
-        System.out.println("author ->"+event.getAuthor());
-        System.out.println("author ->"+event.getAuthor());
+        System.out.println("maxCount ->"+event.getMaxParticipansCount());
+        System.out.println("maxCount ->"+event.getMaxParticipansCount());
+        System.out.println("currCount ->"+event.getCurrentParticipantsCount());
+        System.out.println("currCount ->"+event.getCurrentParticipantsCount());
+        System.out.println("name ->"+event.getName());
+        System.out.println("name ->"+event.getName());
+        System.out.println("homeNum ->"+event.getHomeNum());
+        System.out.println("homeNum ->"+event.getHomeNum());
+        System.out.println("description ->"+event.getDescription());
+        System.out.println("description ->"+event.getDescription());
+        System.out.println("place ->"+event.getPlace());
+        System.out.println("place ->"+event.getPlace());
+        System.out.println("date ->"+event.getDt());
+        System.out.println("date ->"+event.getDt());
+        System.out.println("id ->"+event.getId());
+        System.out.println("id ->"+event.getId());
 
 //        Users author=usersService.getUserById(event.getAuthor());
 //        if(author!=null) {
