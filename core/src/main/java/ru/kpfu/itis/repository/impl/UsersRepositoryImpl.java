@@ -1,6 +1,7 @@
 package ru.kpfu.itis.repository.impl;
 
 import org.hibernate.NonUniqueResultException;
+import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,25 +46,24 @@ public class UsersRepositoryImpl  implements UsersRepository {
     }
 
     public List<Users> getUsersByEvent(Long eventID) {
-        Events e= (Events) sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.eq("id",eventID)).uniqueResult();
-        System.out.println(e.getName());
-        System.out.println(e.getName());
-        System.out.println(e.getName());
-        System.out.println(e.getName());
-        System.out.println(e.getName());
-        System.out.println(e.getName());
-        System.out.println(e.getName());
-        System.out.println(e.getName());
-        System.out.println(e.getName());
-        System.out.println(e.getName());
+//        Events e= (Events) sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.eq("id",eventID)).uniqueResult();
+//        List<Users> users=new ArrayList<Users>();
+//        List<Events_Users> eu=sessionFactory.getCurrentSession().createCriteria(Events_Users.class).
+//                add(Restrictions.eq("event_id",e)).list();
+//        for(Events_Users evus:eu){
+//            users.add((Users) sessionFactory.getCurrentSession().load(Users.class,evus.getUser_id().getId()));
+//        }
 
-        List<Users> users=new ArrayList<Users>();
-        List<Events_Users> eu=sessionFactory.getCurrentSession().createCriteria(Events_Users.class).
-                add(Restrictions.eq("event_id",e)).list();
-        for(Events_Users evus:eu){
-            users.add((Users) sessionFactory.getCurrentSession().load(Users.class,evus.getUser_id().getId()));
+        List<Users> result=null;
+        try {
+            SQLQuery sqlQuery = sessionFactory.getCurrentSession()
+                    .createSQLQuery("select * from users where id=(select user_id_id from events_users where event_id_id="+eventID+")")
+                    .addEntity(Users.class);
+            result = sqlQuery.list();
+        } catch (Exception ex) {
+            System.err.println("Error in getAllFavouritesFor(): " + ex.getMessage());
         }
-        return users;
+        return result;
     }
 
     public Users getUserById(Long id){
