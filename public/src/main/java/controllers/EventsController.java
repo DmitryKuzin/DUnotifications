@@ -45,6 +45,8 @@ public class EventsController extends BaseController{
     public @ResponseBody String setNewEvent(@RequestBody EventsWrapper event){
 
         Events e=event.toEvents();
+
+        System.out.println("event homenum ->"+e.getHomeNum());
         Users author=null;
         if(event.getAuthor()!=null) {
             author = usersService.getUserById(event.getAuthor());
