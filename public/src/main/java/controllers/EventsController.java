@@ -69,7 +69,7 @@ public class EventsController extends BaseController{
 //    DUEventsView getEvents(@PathVariable Integer homeNum){
     @RequestMapping(value = "/du",method = RequestMethod.GET,headers = {"Accept=application/json"})
     public @ResponseBody
-    DUEventsView getEvents(Integer homeNum){
+    DUEventsView getEvents(String homeNum){
         return new DUEventsView(eventsService.getEventsByHomeNum(homeNum));
     }
 

@@ -65,6 +65,11 @@ public class EventsRepositoryImpl implements EventsRepository {
                 .add(Restrictions.eq("homeNum", homeNum)).add(Restrictions.gt("dt",time)).list();
     }
 
+    public List<Events> getEventsByHomeNum(String homeNum, Long time) {
+        return sessionFactory.getCurrentSession().createCriteria(Events.class)
+                .add(Restrictions.eq("homeNum", homeNum)).add(Restrictions.gt("dt",time)).list();
+    }
+
     public List<Events> getEventsByAuthor(Users user) {
         return sessionFactory.getCurrentSession().createCriteria(Events.class).add(Restrictions.eq("author",user)).list();
     }

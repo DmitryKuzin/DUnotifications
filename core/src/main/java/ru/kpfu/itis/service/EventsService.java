@@ -33,6 +33,12 @@ public class EventsService {
         return er.getEventsByHomeNum(homeNum,time);
     }
 
+    public List<Events> getEventsByHomeNum(String homeNum){
+        //TODO хардкод
+        Long time=(System.currentTimeMillis()-(15L*60L*1000L))/1000L;
+        return er.getEventsByHomeNum(homeNum,time);
+    }
+
     public List<Events> getEventsByAuthor(String token){
         Users u=ur.getUserByToken(token);
         System.out.println(u.getId());
