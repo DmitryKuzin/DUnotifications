@@ -43,11 +43,18 @@ public class EventsController extends BaseController{
     public @ResponseBody String setNewEvent(@RequestBody EventsWrapper event){
 
         Events e=event.toEvents();
-        System.out.println(event.getAuthor());
-        System.out.println(event.getAuthor());
-        System.out.println(event.getAuthor());
-        System.out.println(event.getAuthor());
-        System.out.println(event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+        System.out.println("author ->"+event.getAuthor());
+
 //        Users author=usersService.getUserById(event.getAuthor());
 //        if(author!=null) {
 //            System.out.println(author.getEmail());
@@ -55,12 +62,6 @@ public class EventsController extends BaseController{
 //        }
 //        eventsService.addNewEvent(e);
 
-        System.out.println(event.getName());
-        System.out.println(event.getDescription());
-        System.out.println(event.getDt());
-        System.out.println(event.getCurrentParticipantsCount());
-        System.out.println(event.getPlace());
-        System.out.println(event.getMaxParticipansCount());
 
         return "ok";
     }
