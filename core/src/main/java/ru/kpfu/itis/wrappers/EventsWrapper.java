@@ -39,7 +39,6 @@ public class EventsWrapper implements Serializable {
         this.maxParticipansCount = e.getMaxParticipansCount();
         this.name = e.getName();
         this.homeNum=e.getHomeNum();
-        this.author=e.getAuthor().getId();
     }
 
     public Events toEvents(){
