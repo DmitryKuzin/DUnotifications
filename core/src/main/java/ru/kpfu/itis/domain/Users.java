@@ -1,13 +1,14 @@
 package ru.kpfu.itis.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by kuzin on 28.04.2016.
  */
 @Entity
-public class Users {
+public class Users implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
